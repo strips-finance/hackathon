@@ -2,6 +2,12 @@
 
 This project allows to deploy local version of Strips and all related contracts.
 
+Install all deps:
+```shell
+yarn
+```
+
+
 Open terminal and launch local hardhat node:
 
 ```shell
