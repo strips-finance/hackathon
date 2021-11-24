@@ -1,0 +1,1701 @@
+digraph G {
+  graph [ ratio = "auto", page = "100", compound =true, bgcolor = "#2e3e56" ];
+  node [ style = "filled", fillcolor = "#edad56", color = "#edad56", penwidth =3 ];
+  edge [ color = "#fcfcfc", penwidth =2, fontname = "helvetica Neue Ultra Light" ];
+subgraph "clusterIrsMarket" {
+  graph [ label = "IrsMarket", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IrsMarket.notSuspended" [ label = "notSuspended", color = "#1bc6a6", shape =doubleoctagon ];
+  "IrsMarket.initialize" [ label = "initialize", color = "#FF9797", fillcolor = "#FF9797" ];
+  "IrsMarket.isRewardable" [ label = "isRewardable", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.changeDao" [ label = "changeDao", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.getStrips" [ label = "getStrips", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.createRewarder" [ label = "createRewarder", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.getRewarder" [ label = "getRewarder", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.createSLP" [ label = "createSLP", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.approveStrips" [ label = "approveStrips", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.openPosition" [ label = "openPosition", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.closePosition" [ label = "closePosition", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.priceChange" [ label = "priceChange", color = "#FF9797", fillcolor = "#FF9797" ];
+  "IrsMarket._priceChangeOnLong" [ label = "_priceChangeOnLong" ];
+  "IrsMarket._priceChangeOnShort" [ label = "_priceChangeOnShort" ];
+  "IrsMarket.getSlpToken" [ label = "getSlpToken", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.getStakingToken" [ label = "getStakingToken", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.getTradingToken" [ label = "getTradingToken", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.ensureFunds" [ label = "ensureFunds", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.stake" [ label = "stake", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.unstake" [ label = "unstake", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.externalLiquidityChanged" [ label = "externalLiquidityChanged", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.changeTradingPnl" [ label = "changeTradingPnl", color = "#FF9797", fillcolor = "#FF9797" ];
+  "IrsMarket.changeStakingPnl" [ label = "changeStakingPnl", color = "#FF9797", fillcolor = "#FF9797" ];
+  "IrsMarket.changeSushiRouter" [ label = "changeSushiRouter", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.getSushiRouter" [ label = "getSushiRouter", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.getStrp" [ label = "getStrp", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IrsMarket.__AccessControl_init" [ label = "__AccessControl_init" ];
+  "IrsMarket.__ReentrancyGuard_init" [ label = "__ReentrancyGuard_init" ];
+  "IrsMarket._setupRole" [ label = "_setupRole" ];
+}
+
+subgraph "clusterStrips" {
+  graph [ label = "Strips", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Strips.nonReentrant" [ label = "nonReentrant", color = "#1bc6a6", shape =doubleoctagon ];
+  "Strips.notSuspended" [ label = "notSuspended", color = "#1bc6a6", shape =doubleoctagon ];
+  "Strips.pingerOnly" [ label = "pingerOnly", color = "#1bc6a6", shape =doubleoctagon ];
+  "Strips.initialize" [ label = "initialize", color = "#FF9797", fillcolor = "#FF9797" ];
+  "Strips.suspendChange" [ label = "suspendChange", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.changePinger" [ label = "changePinger", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.changeDao" [ label = "changeDao", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.adminDispatcher" [ label = "adminDispatcher", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.check_insurance" [ label = "check_insurance", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.check_trader" [ label = "check_trader", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.viewDispatcher" [ label = "viewDispatcher", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.stateDispatcher" [ label = "stateDispatcher", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.getTradingInfo" [ label = "getTradingInfo", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.getStakingInfo" [ label = "getStakingInfo", color = "#FF9797", fillcolor = "#FF9797" ];
+  "Strips.payKeeperReward" [ label = "payKeeperReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.ping" [ label = "ping", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.assetPnl" [ label = "assetPnl", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.close" [ label = "close", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.open" [ label = "open", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.liquidatePosition" [ label = "liquidatePosition", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.changeCollateral" [ label = "changeCollateral", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Strips.__Ownable_init" [ label = "__Ownable_init" ];
+}
+
+subgraph "clusterAddress" {
+  graph [ label = "Address  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Address.isContract" [ label = "isContract", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Address.sendValue" [ label = "sendValue", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Address.functionCall" [ label = "functionCall" ];
+  "Address.functionCallWithValue" [ label = "functionCallWithValue" ];
+  "Address.functionStaticCall" [ label = "functionStaticCall" ];
+  "Address.functionDelegateCall" [ label = "functionDelegateCall" ];
+  "Address.verifyCallResult" [ label = "verifyCallResult" ];
+}
+
+subgraph "clusterOwnableUpgradeable" {
+  graph [ label = "OwnableUpgradeable", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "OwnableUpgradeable.__Ownable_init" [ label = "__Ownable_init", color = "#f2c383", fillcolor = "#f2c383" ];
+  "OwnableUpgradeable.__Ownable_init_unchained" [ label = "__Ownable_init_unchained" ];
+  "OwnableUpgradeable.owner" [ label = "owner" ];
+  "OwnableUpgradeable.onlyOwner" [ label = "onlyOwner", color = "#1bc6a6", shape =doubleoctagon ];
+  "OwnableUpgradeable.renounceOwnership" [ label = "renounceOwnership", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OwnableUpgradeable.transferOwnership" [ label = "transferOwnership", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OwnableUpgradeable._setOwner" [ label = "_setOwner" ];
+  "OwnableUpgradeable.__Context_init_unchained" [ label = "__Context_init_unchained" ];
+  "OwnableUpgradeable._msgSender" [ label = "_msgSender" ];
+}
+
+subgraph "clusterContextUpgradeable" {
+  graph [ label = "ContextUpgradeable", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "ContextUpgradeable.__Context_init" [ label = "__Context_init", color = "#f2c383", fillcolor = "#f2c383" ];
+  "ContextUpgradeable.__Context_init_unchained" [ label = "__Context_init_unchained" ];
+  "ContextUpgradeable._msgSender" [ label = "_msgSender", color = "#f2c383", fillcolor = "#f2c383" ];
+  "ContextUpgradeable._msgData" [ label = "_msgData", color = "#f2c383", fillcolor = "#f2c383" ];
+}
+
+subgraph "clusterInitializable" {
+  graph [ label = "Initializable", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Initializable.initializer" [ label = "initializer", color = "#1bc6a6", shape =doubleoctagon ];
+}
+
+subgraph "clusterIERC20" {
+  graph [ label = "IERC20  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IERC20.totalSupply" [ label = "totalSupply", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IERC20.balanceOf" [ label = "balanceOf", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IERC20.transfer" [ label = "transfer", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IERC20.allowance" [ label = "allowance" ];
+  "IERC20.approve" [ label = "approve", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IERC20.transferFrom" [ label = "transferFrom", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IERC20.functionCall" [ label = "functionCall" ];
+}
+
+subgraph "clusterIStrips" {
+  graph [ label = "IStrips  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IStrips.open" [ label = "open", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStrips.close" [ label = "close", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStrips.changeCollateral" [ label = "changeCollateral", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStrips.liquidatePosition" [ label = "liquidatePosition", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStrips.payKeeperReward" [ label = "payKeeperReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStrips.assetPnl" [ label = "assetPnl", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStrips.PositionData" [ label = "PositionData" ];
+  "IStrips.PositionParams" [ label = "PositionParams" ];
+}
+
+subgraph "clusterIMarket" {
+  graph [ label = "IMarket  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IMarket.getLongs" [ label = "getLongs", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IMarket.getShorts" [ label = "getShorts", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IMarket.priceChange" [ label = "priceChange" ];
+  "IMarket.currentPrice" [ label = "currentPrice" ];
+  "IMarket.oraclePrice" [ label = "oraclePrice", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IMarket.getAssetOracle" [ label = "getAssetOracle" ];
+  "IMarket.getPairOracle" [ label = "getPairOracle" ];
+  "IMarket.currentOracleIndex" [ label = "currentOracleIndex" ];
+  "IMarket.getPrices" [ label = "getPrices" ];
+  "IMarket.getLiquidity" [ label = "getLiquidity" ];
+  "IMarket.getPartedLiquidity" [ label = "getPartedLiquidity" ];
+  "IMarket.openPosition" [ label = "openPosition", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IMarket.closePosition" [ label = "closePosition" ];
+  "IMarket.maxNotional" [ label = "maxNotional" ];
+}
+
+subgraph "clusterIStripsLpToken" {
+  graph [ label = "IStripsLpToken  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IStripsLpToken.getParams" [ label = "getParams" ];
+  "IStripsLpToken.getBurnableToken" [ label = "getBurnableToken", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStripsLpToken.getPairPrice" [ label = "getPairPrice", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStripsLpToken.checkOwnership" [ label = "checkOwnership" ];
+  "IStripsLpToken.accumulatePnl" [ label = "accumulatePnl" ];
+  "IStripsLpToken.saveProfit" [ label = "saveProfit" ];
+  "IStripsLpToken.mint" [ label = "mint" ];
+  "IStripsLpToken.burn" [ label = "burn", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStripsLpToken.calcFeeLeft" [ label = "calcFeeLeft", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStripsLpToken.calcProfit" [ label = "calcProfit", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStripsLpToken.claimProfit" [ label = "claimProfit" ];
+  "IStripsLpToken.setPenaltyFee" [ label = "setPenaltyFee", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStripsLpToken.setParams" [ label = "setParams", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStripsLpToken.canUnstake" [ label = "canUnstake" ];
+  "IStripsLpToken.changeTradingPnl" [ label = "changeTradingPnl" ];
+  "IStripsLpToken.changeStakingPnl" [ label = "changeStakingPnl" ];
+  "IStripsLpToken.balanceOf" [ label = "balanceOf" ];
+}
+
+subgraph "clusterIUniswapV2Pair" {
+  graph [ label = "IUniswapV2Pair  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IUniswapV2Pair.name" [ label = "name", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.symbol" [ label = "symbol", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.decimals" [ label = "decimals", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.totalSupply" [ label = "totalSupply", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.balanceOf" [ label = "balanceOf", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.allowance" [ label = "allowance", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.approve" [ label = "approve", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.transfer" [ label = "transfer", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.transferFrom" [ label = "transferFrom", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.DOMAIN_SEPARATOR" [ label = "DOMAIN_SEPARATOR", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.PERMIT_TYPEHASH" [ label = "PERMIT_TYPEHASH", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.nonces" [ label = "nonces", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.permit" [ label = "permit", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.MINIMUM_LIQUIDITY" [ label = "MINIMUM_LIQUIDITY", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.factory" [ label = "factory", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.token0" [ label = "token0", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.token1" [ label = "token1", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.getReserves" [ label = "getReserves", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.price0CumulativeLast" [ label = "price0CumulativeLast", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.price1CumulativeLast" [ label = "price1CumulativeLast", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.kLast" [ label = "kLast", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.mint" [ label = "mint", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.burn" [ label = "burn", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.swap" [ label = "swap", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.skim" [ label = "skim", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.sync" [ label = "sync", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Pair.initialize" [ label = "initialize", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterIInsuranceFund" {
+  graph [ label = "IInsuranceFund  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IInsuranceFund.withdraw" [ label = "withdraw", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IInsuranceFund.getLiquidity" [ label = "getLiquidity", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IInsuranceFund.getPartedLiquidity" [ label = "getPartedLiquidity", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterStorageStripsLib" {
+  graph [ label = "StorageStripsLib  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "StorageStripsLib.addOracle" [ label = "addOracle", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.removeOracle" [ label = "removeOracle", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.changeOracleReward" [ label = "changeOracleReward", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.setInsurance" [ label = "setInsurance", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.getMarket" [ label = "getMarket" ];
+  "StorageStripsLib.addMarket" [ label = "addMarket", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.setRiskParams" [ label = "setRiskParams", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.checkPosition" [ label = "checkPosition", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.getPosition" [ label = "getPosition", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.setPosition" [ label = "setPosition", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.unsetPosition" [ label = "unsetPosition", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.partlyClose" [ label = "partlyClose", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.getLiquidationRatio" [ label = "getLiquidationRatio", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.addCollateral" [ label = "addCollateral", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.removeCollateral" [ label = "removeCollateral", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.depositToDao" [ label = "depositToDao", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.depositToMarket" [ label = "depositToMarket", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.withdrawFromMarket" [ label = "withdrawFromMarket", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.depositToInsurance" [ label = "depositToInsurance", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageStripsLib.withdrawFromInsurance" [ label = "withdrawFromInsurance", color = "#f2c383", fillcolor = "#f2c383" ];
+}
+
+subgraph "clusterIStakeble" {
+  graph [ label = "IStakeble  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IStakeble.createSLP" [ label = "createSLP", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.getSlpToken" [ label = "getSlpToken", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.getStakingToken" [ label = "getStakingToken", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.getTradingToken" [ label = "getTradingToken", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.getStrips" [ label = "getStrips", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.ensureFunds" [ label = "ensureFunds", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.stake" [ label = "stake", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.unstake" [ label = "unstake", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.approveStrips" [ label = "approveStrips", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.externalLiquidityChanged" [ label = "externalLiquidityChanged", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.changeTradingPnl" [ label = "changeTradingPnl", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.changeStakingPnl" [ label = "changeStakingPnl", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.isRewardable" [ label = "isRewardable", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.changeSushiRouter" [ label = "changeSushiRouter", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.getSushiRouter" [ label = "getSushiRouter", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStakeble.getStrp" [ label = "getStrp", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterIStakebleEvents" {
+  graph [ label = "IStakebleEvents  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+}
+
+subgraph "clusterStakebleEvents" {
+  graph [ label = "StakebleEvents  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "StakebleEvents.logUnstakeData" [ label = "logUnstakeData" ];
+}
+
+subgraph "clusterIAssetOracle" {
+  graph [ label = "IAssetOracle  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IAssetOracle.getPrice" [ label = "getPrice", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IAssetOracle.calcOracleAverage" [ label = "calcOracleAverage", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterKeeperCompatibleInterface" {
+  graph [ label = "KeeperCompatibleInterface  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "KeeperCompatibleInterface.checkUpkeep" [ label = "checkUpkeep", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "KeeperCompatibleInterface.performUpkeep" [ label = "performUpkeep", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterSignedBaseMath" {
+  graph [ label = "SignedBaseMath  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "SignedBaseMath.oneDecimal" [ label = "oneDecimal", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SignedBaseMath.to18Decimal" [ label = "to18Decimal", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SignedBaseMath.from18Decimal" [ label = "from18Decimal", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SignedBaseMath.toDecimal" [ label = "toDecimal", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SignedBaseMath.tenPercent" [ label = "tenPercent", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SignedBaseMath.ninetyPercent" [ label = "ninetyPercent" ];
+  "SignedBaseMath.onpointOne" [ label = "onpointOne" ];
+  "SignedBaseMath.onePercent" [ label = "onePercent" ];
+  "SignedBaseMath.muld" [ label = "muld", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SignedBaseMath.divd" [ label = "divd", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SignedBaseMath._muld" [ label = "_muld" ];
+  "SignedBaseMath._divd" [ label = "_divd" ];
+  "SignedBaseMath.unit" [ label = "unit" ];
+}
+
+subgraph "clusterStorageMarketLib" {
+  graph [ label = "StorageMarketLib  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "StorageMarketLib.pairPrice" [ label = "pairPrice" ];
+  "StorageMarketLib.calcStakingLiqudity" [ label = "calcStakingLiqudity" ];
+  "StorageMarketLib.calcTradingLiqudity" [ label = "calcTradingLiqudity" ];
+  "StorageMarketLib.getLiquidity" [ label = "getLiquidity", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageMarketLib.maxNotional" [ label = "maxNotional", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageMarketLib.getPrices" [ label = "getPrices", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageMarketLib.currentPrice" [ label = "currentPrice" ];
+  "StorageMarketLib.oraclePrice" [ label = "oraclePrice", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageMarketLib.approveStrips" [ label = "approveStrips", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageMarketLib._updateRatio" [ label = "_updateRatio", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StorageMarketLib._whatIfRatio" [ label = "_whatIfRatio", color = "#f2c383", fillcolor = "#f2c383" ];
+}
+
+subgraph "clusterIUniswapLpOracle" {
+  graph [ label = "IUniswapLpOracle  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IUniswapLpOracle.getPrice" [ label = "getPrice", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterSafeERC20" {
+  graph [ label = "SafeERC20  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "SafeERC20.safeTransfer" [ label = "safeTransfer", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SafeERC20.safeTransferFrom" [ label = "safeTransferFrom", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SafeERC20.safeApprove" [ label = "safeApprove", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SafeERC20.safeIncreaseAllowance" [ label = "safeIncreaseAllowance", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SafeERC20.safeDecreaseAllowance" [ label = "safeDecreaseAllowance", color = "#f2c383", fillcolor = "#f2c383" ];
+  "SafeERC20._callOptionalReturn" [ label = "_callOptionalReturn" ];
+}
+
+subgraph "clusterIRewarder" {
+  graph [ label = "IRewarder  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IRewarder.claimStakingReward" [ label = "claimStakingReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IRewarder.claimTradingReward" [ label = "claimTradingReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IRewarder.totalStakerReward" [ label = "totalStakerReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IRewarder.totalTradeReward" [ label = "totalTradeReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IRewarder.rewardStaker" [ label = "rewardStaker", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IRewarder.rewardTrader" [ label = "rewardTrader", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IRewarder.currentTradingReward" [ label = "currentTradingReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IRewarder.currentStakingReward" [ label = "currentStakingReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterIStripsEvents" {
+  graph [ label = "IStripsEvents  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+}
+
+subgraph "clusterStripsEvents" {
+  graph [ label = "StripsEvents  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "StripsEvents.logCheckData" [ label = "logCheckData" ];
+  "StripsEvents.logCheckInsuranceData" [ label = "logCheckInsuranceData" ];
+}
+
+subgraph "clusterReentrancyGuardUpgradeable" {
+  graph [ label = "ReentrancyGuardUpgradeable", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "ReentrancyGuardUpgradeable.__ReentrancyGuard_init" [ label = "__ReentrancyGuard_init", color = "#f2c383", fillcolor = "#f2c383" ];
+  "ReentrancyGuardUpgradeable.__ReentrancyGuard_init_unchained" [ label = "__ReentrancyGuard_init_unchained" ];
+  "ReentrancyGuardUpgradeable.nonReentrant" [ label = "nonReentrant", color = "#1bc6a6", shape =doubleoctagon ];
+}
+
+subgraph "clusterAccessControlUpgradeable" {
+  graph [ label = "AccessControlUpgradeable", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "AccessControlUpgradeable.__AccessControl_init" [ label = "__AccessControl_init", color = "#f2c383", fillcolor = "#f2c383" ];
+  "AccessControlUpgradeable.__AccessControl_init_unchained" [ label = "__AccessControl_init_unchained" ];
+  "AccessControlUpgradeable.onlyRole" [ label = "onlyRole", color = "#1bc6a6", shape =doubleoctagon ];
+  "AccessControlUpgradeable.supportsInterface" [ label = "supportsInterface", color = "#FF9797", fillcolor = "#FF9797" ];
+  "AccessControlUpgradeable.hasRole" [ label = "hasRole" ];
+  "AccessControlUpgradeable._checkRole" [ label = "_checkRole" ];
+  "AccessControlUpgradeable.getRoleAdmin" [ label = "getRoleAdmin" ];
+  "AccessControlUpgradeable.grantRole" [ label = "grantRole", color = "#FF9797", fillcolor = "#FF9797" ];
+  "AccessControlUpgradeable.revokeRole" [ label = "revokeRole", color = "#FF9797", fillcolor = "#FF9797" ];
+  "AccessControlUpgradeable.renounceRole" [ label = "renounceRole", color = "#FF9797", fillcolor = "#FF9797" ];
+  "AccessControlUpgradeable._setupRole" [ label = "_setupRole", color = "#f2c383", fillcolor = "#f2c383" ];
+  "AccessControlUpgradeable._setRoleAdmin" [ label = "_setRoleAdmin", color = "#f2c383", fillcolor = "#f2c383" ];
+  "AccessControlUpgradeable._grantRole" [ label = "_grantRole" ];
+  "AccessControlUpgradeable._revokeRole" [ label = "_revokeRole" ];
+  "AccessControlUpgradeable.__ERC165_init_unchained" [ label = "__ERC165_init_unchained" ];
+  "AccessControlUpgradeable._msgSender" [ label = "_msgSender" ];
+  "AccessControlUpgradeable.type" [ label = "type" ];
+}
+
+subgraph "clusterIAccessControlUpgradeable" {
+  graph [ label = "IAccessControlUpgradeable  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IAccessControlUpgradeable.hasRole" [ label = "hasRole", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IAccessControlUpgradeable.getRoleAdmin" [ label = "getRoleAdmin", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IAccessControlUpgradeable.grantRole" [ label = "grantRole", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IAccessControlUpgradeable.revokeRole" [ label = "revokeRole", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IAccessControlUpgradeable.renounceRole" [ label = "renounceRole", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterStringsUpgradeable" {
+  graph [ label = "StringsUpgradeable  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "StringsUpgradeable.toHexString" [ label = "toHexString", color = "#f2c383", fillcolor = "#f2c383" ];
+  "StringsUpgradeable.toString" [ label = "toString", color = "#f2c383", fillcolor = "#f2c383" ];
+}
+
+subgraph "clusterERC165Upgradeable" {
+  graph [ label = "ERC165Upgradeable", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "ERC165Upgradeable.supportsInterface" [ label = "supportsInterface", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC165Upgradeable.__ERC165_init" [ label = "__ERC165_init", color = "#f2c383", fillcolor = "#f2c383" ];
+  "ERC165Upgradeable.__ERC165_init_unchained" [ label = "__ERC165_init_unchained" ];
+  "ERC165Upgradeable.type" [ label = "type" ];
+}
+
+subgraph "clusterIERC165Upgradeable" {
+  graph [ label = "IERC165Upgradeable  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IERC165Upgradeable.supportsInterface" [ label = "supportsInterface", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterIRewardable" {
+  graph [ label = "IRewardable  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IRewardable.createRewarder" [ label = "createRewarder", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IRewardable.getRewarder" [ label = "getRewarder", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterMGetters" {
+  graph [ label = "MGetters", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "MGetters.currentPrice" [ label = "currentPrice", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "MGetters.oraclePrice" [ label = "oraclePrice", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "MGetters.getLongs" [ label = "getLongs", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "MGetters.getShorts" [ label = "getShorts", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "MGetters.maxNotional" [ label = "maxNotional", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "MGetters.getPrices" [ label = "getPrices", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "MGetters.getLiquidity" [ label = "getLiquidity", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "MGetters.getPartedLiquidity" [ label = "getPartedLiquidity", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "MGetters.getAssetOracle" [ label = "getAssetOracle", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "MGetters.getPairOracle" [ label = "getPairOracle", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IMarket.currentOracleIndex" [ label = "currentOracleIndex", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterMState" {
+  graph [ label = "MState", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+}
+
+subgraph "clusterStakingImpl" {
+  graph [ label = "StakingImpl  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "StakingImpl._burnPair" [ label = "_burnPair", color = "#FF9797", fillcolor = "#FF9797" ];
+  "StakingImpl._stake" [ label = "_stake", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "StakingImpl._unstake" [ label = "_unstake", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "StakingImpl.onlyStaker" [ label = "onlyStaker", color = "#1bc6a6", shape =doubleoctagon ];
+}
+
+subgraph "clusterSLPToken" {
+  graph [ label = "SLPToken", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "SLPToken.<Constructor>" [ label = "<Constructor>", color = "#FF9797", fillcolor = "#FF9797" ];
+  "IStripsLpToken.changeTradingPnl" [ label = "changeTradingPnl", color = "#FF9797", fillcolor = "#FF9797" ];
+  "IStripsLpToken.changeStakingPnl" [ label = "changeStakingPnl", color = "#FF9797", fillcolor = "#FF9797" ];
+  "IStripsLpToken.claimProfit" [ label = "claimProfit", color = "#FF9797", fillcolor = "#FF9797" ];
+  "SLPToken.getPairPrice" [ label = "getPairPrice", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "SLPToken.getBurnableToken" [ label = "getBurnableToken", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStripsLpToken.getParams" [ label = "getParams", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IStripsLpToken.checkOwnership" [ label = "checkOwnership", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "SLPToken.stakingPnl" [ label = "stakingPnl", color = "#FF9797", fillcolor = "#FF9797" ];
+  "SLPToken.tradingPnl" [ label = "tradingPnl", color = "#FF9797", fillcolor = "#FF9797" ];
+  "IStripsLpToken.accumulatePnl" [ label = "accumulatePnl", color = "#FF9797", fillcolor = "#FF9797" ];
+  "IStripsLpToken.saveProfit" [ label = "saveProfit", color = "#FF9797", fillcolor = "#FF9797" ];
+  "IStripsLpToken.mint" [ label = "mint", color = "#FF9797", fillcolor = "#FF9797" ];
+  "SLPToken.burn" [ label = "burn" ];
+  "IStripsLpToken.canUnstake" [ label = "canUnstake", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "SLPToken.calcProfit" [ label = "calcProfit" ];
+  "SLPToken.calcFeeLeft" [ label = "calcFeeLeft" ];
+  "SLPToken.setPenaltyFee" [ label = "setPenaltyFee", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "SLPToken.setParams" [ label = "setParams", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "SLPToken.transfer" [ label = "transfer", color = "#FF9797", fillcolor = "#FF9797" ];
+  "SLPToken.transferFrom" [ label = "transferFrom", color = "#FF9797", fillcolor = "#FF9797" ];
+  "SLPToken._transferStake" [ label = "_transferStake" ];
+  "SLPToken.owner" [ label = "owner" ];
+  "SLPToken.totalSupply" [ label = "totalSupply" ];
+  "SLPToken._mint" [ label = "_mint" ];
+  "SLPToken._burn" [ label = "_burn" ];
+}
+
+subgraph "clusterERC20" {
+  graph [ label = "ERC20", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "ERC20.<Constructor>" [ label = "<Constructor>", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC20.name" [ label = "name", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC20.symbol" [ label = "symbol", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC20.decimals" [ label = "decimals", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC20.totalSupply" [ label = "totalSupply", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC20.balanceOf" [ label = "balanceOf", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC20.transfer" [ label = "transfer", color = "#FF9797", fillcolor = "#FF9797" ];
+  "IERC20.allowance" [ label = "allowance", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC20.approve" [ label = "approve", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC20.transferFrom" [ label = "transferFrom", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC20.increaseAllowance" [ label = "increaseAllowance", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC20.decreaseAllowance" [ label = "decreaseAllowance", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC20._transfer" [ label = "_transfer" ];
+  "ERC20._mint" [ label = "_mint", color = "#f2c383", fillcolor = "#f2c383" ];
+  "ERC20._burn" [ label = "_burn", color = "#f2c383", fillcolor = "#f2c383" ];
+  "ERC20._approve" [ label = "_approve" ];
+  "ERC20._beforeTokenTransfer" [ label = "_beforeTokenTransfer" ];
+  "ERC20._afterTokenTransfer" [ label = "_afterTokenTransfer" ];
+  "ERC20._msgSender" [ label = "_msgSender" ];
+}
+
+subgraph "clusterIERC20Metadata" {
+  graph [ label = "IERC20Metadata  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IERC20Metadata.name" [ label = "name", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IERC20Metadata.symbol" [ label = "symbol", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IERC20Metadata.decimals" [ label = "decimals", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterContext" {
+  graph [ label = "Context", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Context._msgSender" [ label = "_msgSender", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Context._msgData" [ label = "_msgData", color = "#f2c383", fillcolor = "#f2c383" ];
+}
+
+subgraph "clusterOwnable" {
+  graph [ label = "Ownable", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Ownable.transfer" [ label = "transfer" ];
+  "Ownable.transferFrom" [ label = "transferFrom" ];
+  "Ownable.<Constructor>" [ label = "<Constructor>", color = "#FF9797", fillcolor = "#FF9797" ];
+  "Ownable.owner" [ label = "owner" ];
+  "Ownable.onlyOwner" [ label = "onlyOwner", color = "#1bc6a6", shape =doubleoctagon ];
+  "Ownable.renounceOwnership" [ label = "renounceOwnership", color = "#FF9797", fillcolor = "#FF9797" ];
+  "Ownable.transferOwnership" [ label = "transferOwnership", color = "#FF9797", fillcolor = "#FF9797" ];
+  "Ownable._setOwner" [ label = "_setOwner" ];
+  "Ownable._msgSender" [ label = "_msgSender" ];
+}
+
+subgraph "clusterReentrancyGuard" {
+  graph [ label = "ReentrancyGuard", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "ReentrancyGuard.<Constructor>" [ label = "<Constructor>", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ReentrancyGuard.nonReentrant" [ label = "nonReentrant", color = "#1bc6a6", shape =doubleoctagon ];
+}
+
+subgraph "clusterIUniswapV2Router01" {
+  graph [ label = "IUniswapV2Router01  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IUniswapV2Router01.factory" [ label = "factory", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.WETH" [ label = "WETH", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.addLiquidity" [ label = "addLiquidity", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.addLiquidityETH" [ label = "addLiquidityETH", color = "brown", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.removeLiquidity" [ label = "removeLiquidity", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.removeLiquidityETH" [ label = "removeLiquidityETH", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.removeLiquidityWithPermit" [ label = "removeLiquidityWithPermit", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.removeLiquidityETHWithPermit" [ label = "removeLiquidityETHWithPermit", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.swapExactTokensForTokens" [ label = "swapExactTokensForTokens", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.swapTokensForExactTokens" [ label = "swapTokensForExactTokens", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.swapExactETHForTokens" [ label = "swapExactETHForTokens", color = "brown", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.swapTokensForExactETH" [ label = "swapTokensForExactETH", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.swapExactTokensForETH" [ label = "swapExactTokensForETH", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.swapETHForExactTokens" [ label = "swapETHForExactTokens", color = "brown", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.quote" [ label = "quote", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.getAmountOut" [ label = "getAmountOut", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.getAmountIn" [ label = "getAmountIn", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.getAmountsOut" [ label = "getAmountsOut", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router01.getAmountsIn" [ label = "getAmountsIn", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterIUniswapV2Router02" {
+  graph [ label = "IUniswapV2Router02  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IUniswapV2Router02.removeLiquidityETHSupportingFeeOnTransferTokens" [ label = "removeLiquidityETHSupportingFeeOnTransferTokens", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router02.removeLiquidityETHWithPermitSupportingFeeOnTransferTokens" [ label = "removeLiquidityETHWithPermitSupportingFeeOnTransferTokens", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router02.swapExactTokensForTokensSupportingFeeOnTransferTokens" [ label = "swapExactTokensForTokensSupportingFeeOnTransferTokens", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router02.swapExactETHForTokensSupportingFeeOnTransferTokens" [ label = "swapExactETHForTokensSupportingFeeOnTransferTokens", color = "brown", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Router02.swapExactTokensForETHSupportingFeeOnTransferTokens" [ label = "swapExactTokensForETHSupportingFeeOnTransferTokens", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterIUniswapV2Factory" {
+  graph [ label = "IUniswapV2Factory  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IUniswapV2Factory.feeTo" [ label = "feeTo", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Factory.feeToSetter" [ label = "feeToSetter", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Factory.getPair" [ label = "getPair", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Factory.allPairs" [ label = "allPairs", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Factory.allPairsLength" [ label = "allPairsLength", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Factory.createPair" [ label = "createPair", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Factory.setFeeTo" [ label = "setFeeTo", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IUniswapV2Factory.setFeeToSetter" [ label = "setFeeToSetter", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterAssetOracle" {
+  graph [ label = "AssetOracle", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "AssetOracle.activeOnly" [ label = "activeOnly", color = "#1bc6a6", shape =doubleoctagon ];
+  "AssetOracle.keeperOnly" [ label = "keeperOnly", color = "#1bc6a6", shape =doubleoctagon ];
+  "AssetOracle.<Constructor>" [ label = "<Constructor>", color = "#FF9797", fillcolor = "#FF9797" ];
+  "AssetOracle.getPrice" [ label = "getPrice", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "AssetOracle.checkUpkeep" [ label = "checkUpkeep", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "AssetOracle.accumulateOracle" [ label = "accumulateOracle" ];
+  "AssetOracle.performUpkeep" [ label = "performUpkeep", color = "#FF9797", fillcolor = "#FF9797" ];
+  "AssetOracle.calcOracleAverage" [ label = "calcOracleAverage", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterSlpFactoryImpl" {
+  graph [ label = "SlpFactoryImpl  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "SlpFactoryImpl._rewarderFactory" [ label = "_rewarderFactory", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "SlpFactoryImpl._slpFactory" [ label = "_slpFactory", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterRewarder" {
+  graph [ label = "Rewarder", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Rewarder.onlyOwner" [ label = "onlyOwner", color = "#1bc6a6", shape =doubleoctagon ];
+  "Rewarder.onlyAdmin" [ label = "onlyAdmin", color = "#1bc6a6", shape =doubleoctagon ];
+  "Rewarder.onlyStripsOrOwner" [ label = "onlyStripsOrOwner", color = "#1bc6a6", shape =doubleoctagon ];
+  "Rewarder.nonReentrant" [ label = "nonReentrant", color = "#1bc6a6", shape =doubleoctagon ];
+  "Rewarder.<Constructor>" [ label = "<Constructor>", color = "#FF9797", fillcolor = "#FF9797" ];
+  "Rewarder.currentTradingReward" [ label = "currentTradingReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Rewarder.currentStakingReward" [ label = "currentStakingReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Rewarder.changeTradingReward" [ label = "changeTradingReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Rewarder.changeStakingReward" [ label = "changeStakingReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Rewarder.changeDao" [ label = "changeDao", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Rewarder.changeOwner" [ label = "changeOwner", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Rewarder.changeAdmin" [ label = "changeAdmin", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Rewarder.rewardStaker" [ label = "rewardStaker", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Rewarder.claimStakingReward" [ label = "claimStakingReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Rewarder.totalStakerReward" [ label = "totalStakerReward" ];
+  "Rewarder.totalTradeReward" [ label = "totalTradeReward", color = "#FF9797", fillcolor = "#FF9797" ];
+  "Rewarder.rewardTrader" [ label = "rewardTrader", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Rewarder.claimTradingReward" [ label = "claimTradingReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "Rewarder._updatePeriod" [ label = "_updatePeriod" ];
+  "Rewarder._booster" [ label = "_booster" ];
+}
+
+subgraph "clusterAccessControl" {
+  graph [ label = "AccessControl", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "AccessControl.onlyRole" [ label = "onlyRole", color = "#1bc6a6", shape =doubleoctagon ];
+  "AccessControl.supportsInterface" [ label = "supportsInterface", color = "#FF9797", fillcolor = "#FF9797" ];
+  "AccessControl.hasRole" [ label = "hasRole" ];
+  "AccessControl._checkRole" [ label = "_checkRole" ];
+  "AccessControl.getRoleAdmin" [ label = "getRoleAdmin" ];
+  "AccessControl.grantRole" [ label = "grantRole", color = "#FF9797", fillcolor = "#FF9797" ];
+  "AccessControl.revokeRole" [ label = "revokeRole", color = "#FF9797", fillcolor = "#FF9797" ];
+  "AccessControl.renounceRole" [ label = "renounceRole", color = "#FF9797", fillcolor = "#FF9797" ];
+  "AccessControl._setupRole" [ label = "_setupRole", color = "#f2c383", fillcolor = "#f2c383" ];
+  "AccessControl._setRoleAdmin" [ label = "_setRoleAdmin", color = "#f2c383", fillcolor = "#f2c383" ];
+  "AccessControl._grantRole" [ label = "_grantRole" ];
+  "AccessControl._revokeRole" [ label = "_revokeRole" ];
+  "AccessControl._msgSender" [ label = "_msgSender" ];
+  "AccessControl.type" [ label = "type" ];
+}
+
+subgraph "clusterIAccessControl" {
+  graph [ label = "IAccessControl  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IAccessControl.hasRole" [ label = "hasRole", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IAccessControl.getRoleAdmin" [ label = "getRoleAdmin", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IAccessControl.grantRole" [ label = "grantRole", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IAccessControl.revokeRole" [ label = "revokeRole", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "IAccessControl.renounceRole" [ label = "renounceRole", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterStrings" {
+  graph [ label = "Strings  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Strings.toHexString" [ label = "toHexString", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Strings.toString" [ label = "toString", color = "#f2c383", fillcolor = "#f2c383" ];
+}
+
+subgraph "clusterERC165" {
+  graph [ label = "ERC165", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "ERC165.supportsInterface" [ label = "supportsInterface", color = "#FF9797", fillcolor = "#FF9797" ];
+  "ERC165.type" [ label = "type" ];
+}
+
+subgraph "clusterIERC165" {
+  graph [ label = "IERC165  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "IERC165.supportsInterface" [ label = "supportsInterface", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterStripsViewImpl" {
+  graph [ label = "StripsViewImpl  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "StripsViewImpl.dispatcher" [ label = "dispatcher", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "StripsViewImpl.getTradingInfo" [ label = "getTradingInfo", color = "#FF9797", fillcolor = "#FF9797" ];
+  "StripsViewImpl.getStakingInfo" [ label = "getStakingInfo", color = "#FF9797", fillcolor = "#FF9797" ];
+  "StripsViewImpl._allOracles" [ label = "_allOracles" ];
+  "StripsViewImpl._allMarkets" [ label = "_allMarkets" ];
+  "StripsViewImpl.collateralRequired" [ label = "collateralRequired", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "StripsViewImpl.getAllInfo" [ label = "getAllInfo", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "StripsViewImpl.calcFeeWithSlippage" [ label = "calcFeeWithSlippage" ];
+  "StripsViewImpl.calcPositionParams" [ label = "calcPositionParams" ];
+  "StripsViewImpl.calcCloseParams" [ label = "calcCloseParams" ];
+  "StripsViewImpl.calcRewards" [ label = "calcRewards" ];
+}
+
+subgraph "clusterPnlLib" {
+  graph [ label = "PnlLib  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "PnlLib.getAmmTotalPnl" [ label = "getAmmTotalPnl", color = "#f2c383", fillcolor = "#f2c383" ];
+  "PnlLib.calcUnrealizedPnl" [ label = "calcUnrealizedPnl", color = "#f2c383", fillcolor = "#f2c383" ];
+  "PnlLib.getMarginRatio" [ label = "getMarginRatio", color = "#f2c383", fillcolor = "#f2c383" ];
+  "PnlLib.calcPositionFee" [ label = "calcPositionFee", color = "#f2c383", fillcolor = "#f2c383" ];
+  "PnlLib.calcPnlParts" [ label = "calcPnlParts", color = "#f2c383", fillcolor = "#f2c383" ];
+  "PnlLib.getFundingUnrealizedPnl" [ label = "getFundingUnrealizedPnl", color = "#f2c383", fillcolor = "#f2c383" ];
+  "PnlLib.getAmmFundingPnl" [ label = "getAmmFundingPnl", color = "#f2c383", fillcolor = "#f2c383" ];
+  "PnlLib.getAmmAllPnl" [ label = "getAmmAllPnl", color = "#f2c383", fillcolor = "#f2c383" ];
+  "PnlLib.getAllUnrealizedPnl" [ label = "getAllUnrealizedPnl", color = "#f2c383", fillcolor = "#f2c383" ];
+  "PnlLib.calcAmmPnlParts" [ label = "calcAmmPnlParts" ];
+  "PnlLib.calcOracleAverage" [ label = "calcOracleAverage" ];
+  "PnlLib.calcPositionParams" [ label = "calcPositionParams", color = "#f2c383", fillcolor = "#f2c383" ];
+  "PnlLib.calcLiquidationFee" [ label = "calcLiquidationFee", color = "#f2c383", fillcolor = "#f2c383" ];
+}
+
+subgraph "clusterStripsAdminImpl" {
+  graph [ label = "StripsAdminImpl  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "StripsAdminImpl.dispatcher" [ label = "dispatcher", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "StripsAdminImpl._addMarket" [ label = "_addMarket" ];
+  "StripsAdminImpl._addOracle" [ label = "_addOracle" ];
+  "StripsAdminImpl._removeOracle" [ label = "_removeOracle" ];
+  "StripsAdminImpl._changeOracleReward" [ label = "_changeOracleReward" ];
+  "StripsAdminImpl._setInsurance" [ label = "_setInsurance" ];
+  "StripsAdminImpl._changeRiskParams" [ label = "_changeRiskParams" ];
+}
+
+subgraph "clusterStripsStateImpl" {
+  graph [ label = "StripsStateImpl  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "StripsStateImpl._check_insurance" [ label = "_check_insurance", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "StripsStateImpl._check_trader" [ label = "_check_trader", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "StripsStateImpl.dispatcher" [ label = "dispatcher", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "StripsStateImpl._payKeeperReward" [ label = "_payKeeperReward", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "StripsStateImpl.claimRewards" [ label = "claimRewards" ];
+}
+
+subgraph "clusterTradeImpl" {
+  graph [ label = "TradeImpl  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "TradeImpl.closePosition" [ label = "closePosition", color = "#FF9797", fillcolor = "#FF9797" ];
+  "TradeImpl.openPosition" [ label = "openPosition", color = "#FF9797", fillcolor = "#FF9797" ];
+  "TradeImpl.PositionParams" [ label = "PositionParams" ];
+  "TradeImpl.liquidatePosition" [ label = "liquidatePosition", color = "#FF9797", fillcolor = "#FF9797" ];
+  "TradeImpl.addCollateral" [ label = "addCollateral", color = "#f2c383", fillcolor = "#f2c383" ];
+  "TradeImpl.removeCollateral" [ label = "removeCollateral", color = "#f2c383", fillcolor = "#f2c383" ];
+  "TradeImpl.ammPositionUpdate" [ label = "ammPositionUpdate", color = "#edad56", fillcolor = "#edad56" ];
+  "TradeImpl._ammCummulateFundingPnl" [ label = "_ammCummulateFundingPnl" ];
+  "TradeImpl._netPosition" [ label = "_netPosition" ];
+  "TradeImpl._aggregate" [ label = "_aggregate" ];
+  "TradeImpl._liquidateWholeOrCloseRatio" [ label = "_liquidateWholeOrCloseRatio" ];
+  "TradeImpl._close" [ label = "_close" ];
+  "TradeImpl._open" [ label = "_open" ];
+  "TradeImpl._liquidate" [ label = "_liquidate" ];
+  "TradeImpl._unsetPostion" [ label = "_unsetPostion" ];
+  "TradeImpl._requireMargin" [ label = "_requireMargin" ];
+  "TradeImpl._requireMarginRatio" [ label = "_requireMarginRatio" ];
+  "TradeImpl._requireSlippage" [ label = "_requireSlippage" ];
+  "TradeImpl._requireNotional" [ label = "_requireNotional" ];
+  "TradeImpl._receiveCollateral" [ label = "_receiveCollateral" ];
+  "TradeImpl._returnCollateral" [ label = "_returnCollateral" ];
+  "TradeImpl._payProfitOnPositionClose" [ label = "_payProfitOnPositionClose" ];
+  "TradeImpl._payPositionFee" [ label = "_payPositionFee" ];
+  "TradeImpl._borrowInsurance" [ label = "_borrowInsurance" ];
+}
+
+subgraph "clusterSState" {
+  graph [ label = "SState", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+}
+
+subgraph "clusterUniswapLpOracle" {
+  graph [ label = "UniswapLpOracle", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "UniswapLpOracle.activeOnly" [ label = "activeOnly", color = "#1bc6a6", shape =doubleoctagon ];
+  "UniswapLpOracle.<Constructor>" [ label = "<Constructor>", color = "#FF9797", fillcolor = "#FF9797" ];
+  "UniswapLpOracle.getPrice" [ label = "getPrice", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "UniswapLpOracle.checkUpkeep" [ label = "checkUpkeep", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "UniswapLpOracle.performUpkeep" [ label = "performUpkeep", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterStorageMarketLib.State" {
+  graph [ label = "StorageMarketLib.State", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "StorageMarketLib.State.approveStrips" [ label = "approveStrips" ];
+  "StorageMarketLib.State._updateRatio" [ label = "_updateRatio" ];
+  "StorageMarketLib.State.currentPrice" [ label = "currentPrice" ];
+  "StorageMarketLib.State._whatIfRatio" [ label = "_whatIfRatio" ];
+  "StorageMarketLib.State.calcTradingLiqudity" [ label = "calcTradingLiqudity" ];
+  "StorageMarketLib.State.oraclePrice" [ label = "oraclePrice" ];
+  "StorageMarketLib.State.maxNotional" [ label = "maxNotional" ];
+  "StorageMarketLib.State.getPrices" [ label = "getPrices" ];
+  "StorageMarketLib.State.getLiquidity" [ label = "getLiquidity" ];
+  "StorageMarketLib.State.calcStakingLiqudity" [ label = "calcStakingLiqudity" ];
+}
+
+subgraph "clusterStorageStripsLib.State" {
+  graph [ label = "StorageStripsLib.State", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "StorageStripsLib.State.checkPosition" [ label = "checkPosition" ];
+  "StorageStripsLib.State.getPosition" [ label = "getPosition" ];
+  "StorageStripsLib.State.addMarket" [ label = "addMarket" ];
+  "StorageStripsLib.State.addOracle" [ label = "addOracle" ];
+  "StorageStripsLib.State.removeOracle" [ label = "removeOracle" ];
+  "StorageStripsLib.State.changeOracleReward" [ label = "changeOracleReward" ];
+  "StorageStripsLib.State.setInsurance" [ label = "setInsurance" ];
+  "StorageStripsLib.State.setRiskParams" [ label = "setRiskParams" ];
+  "StorageStripsLib.State.getLiquidationRatio" [ label = "getLiquidationRatio" ];
+  "StorageStripsLib.State.addCollateral" [ label = "addCollateral" ];
+  "StorageStripsLib.State.removeCollateral" [ label = "removeCollateral" ];
+  "StorageStripsLib.State.setPosition" [ label = "setPosition" ];
+  "StorageStripsLib.State.withdrawFromMarket" [ label = "withdrawFromMarket" ];
+  "StorageStripsLib.State.depositToMarket" [ label = "depositToMarket" ];
+  "StorageStripsLib.State.depositToInsurance" [ label = "depositToInsurance" ];
+  "StorageStripsLib.State.unsetPosition" [ label = "unsetPosition" ];
+  "StorageStripsLib.State.partlyClose" [ label = "partlyClose" ];
+  "StorageStripsLib.State.depositToDao" [ label = "depositToDao" ];
+  "StorageStripsLib.State.withdrawFromInsurance" [ label = "withdrawFromInsurance" ];
+}
+
+subgraph "clustertarget" {
+  graph [ label = "target", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "target.staticcall" [ label = "staticcall" ];
+  "target.delegatecall" [ label = "delegatecall" ];
+}
+
+subgraph "clusterprevAverage" {
+  graph [ label = "prevAverage", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "prevAverage.muld" [ label = "muld" ];
+}
+
+subgraph "clusterinitialPrice" {
+  graph [ label = "initialPrice", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "initialPrice.muld" [ label = "muld" ];
+}
+
+subgraph "clusterstakingLiquidity" {
+  graph [ label = "stakingLiquidity", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "stakingLiquidity.muld" [ label = "muld" ];
+}
+
+subgraph "cluster_liquidity" {
+  graph [ label = "_liquidity", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "_liquidity.muld" [ label = "muld" ];
+  "_liquidity.divd" [ label = "divd" ];
+}
+
+subgraph "clusterdiff" {
+  graph [ label = "diff", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "diff.muld" [ label = "muld" ];
+  "diff.divd" [ label = "divd" ];
+}
+
+subgraph "clustersupply" {
+  graph [ label = "supply", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "supply.muld" [ label = "muld" ];
+}
+
+subgraph "clusterratio" {
+  graph [ label = "ratio", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "ratio.divd" [ label = "divd" ];
+}
+
+subgraph "clusterdemand" {
+  graph [ label = "demand", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "demand.divd" [ label = "divd" ];
+}
+
+subgraph "clusterrequiredAmount" {
+  graph [ label = "requiredAmount", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "requiredAmount.muld" [ label = "muld" ];
+}
+
+subgraph "clustertime_elapsed" {
+  graph [ label = "time_elapsed", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "time_elapsed.toDecimal" [ label = "toDecimal" ];
+}
+
+subgraph "clustertimeDiff" {
+  graph [ label = "timeDiff", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "timeDiff.toDecimal" [ label = "toDecimal" ];
+}
+
+subgraph "cluster_notional" {
+  graph [ label = "_notional", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "_notional.muld" [ label = "muld" ];
+}
+
+subgraph "clusternotional" {
+  graph [ label = "notional", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "notional.muld" [ label = "muld" ];
+  "notional.divd" [ label = "divd" ];
+}
+
+subgraph "clusterANN_PERIOD_SEC" {
+  graph [ label = "ANN_PERIOD_SEC", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "ANN_PERIOD_SEC.toDecimal" [ label = "toDecimal" ];
+}
+
+subgraph "clusteroracle_avg" {
+  graph [ label = "oracle_avg", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "oracle_avg.muld" [ label = "muld" ];
+}
+
+subgraph "clusterunrealizedPnl" {
+  graph [ label = "unrealizedPnl", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "unrealizedPnl.muld" [ label = "muld" ];
+}
+
+subgraph "clustercalcPrice" {
+  graph [ label = "calcPrice", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "calcPrice.muld" [ label = "muld" ];
+}
+
+subgraph "clusterammFeeRatio" {
+  graph [ label = "ammFeeRatio", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "ammFeeRatio.muld" [ label = "muld" ];
+}
+
+subgraph "clusterdaoFeeRatio" {
+  graph [ label = "daoFeeRatio", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "daoFeeRatio.muld" [ label = "muld" ];
+}
+
+subgraph "clusteriFeeRatio" {
+  graph [ label = "iFeeRatio", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "iFeeRatio.muld" [ label = "muld" ];
+}
+
+subgraph "cluster_amount" {
+  graph [ label = "_amount", color = "#e8726d", fontcolor = "#f0f0f0", style = "rounded,dashed", bgcolor = "#3b4b63" ];
+  "_amount.muld" [ label = "muld" ];
+}
+
+  "IrsMarket.initialize";
+  "Address.isContract";
+  "IrsMarket.__AccessControl_init";
+  "IrsMarket.__ReentrancyGuard_init";
+  "SignedBaseMath.oneDecimal";
+  "IrsMarket._setupRole";
+  "IrsMarket.createRewarder";
+  "SlpFactoryImpl._rewarderFactory";
+  "IrsMarket.createSLP";
+  "SlpFactoryImpl._slpFactory";
+  "IrsMarket.approveStrips";
+  "StorageMarketLib.State.approveStrips";
+  "IrsMarket.openPosition";
+  "StorageMarketLib.State._updateRatio";
+  "StorageMarketLib.State.currentPrice";
+  "IrsMarket.closePosition";
+  "IrsMarket.priceChange";
+  "IrsMarket._priceChangeOnLong";
+  "IrsMarket._priceChangeOnShort";
+  "StorageMarketLib.State._whatIfRatio";
+  "IrsMarket.ensureFunds";
+  "StorageMarketLib.State.calcTradingLiqudity";
+  "StakingImpl._burnPair";
+  "IrsMarket.stake";
+  "StakingImpl._stake";
+  "IrsMarket.unstake";
+  "StakingImpl._unstake";
+  "IrsMarket.changeSushiRouter";
+  "Strips.initialize";
+  "Strips.__Ownable_init";
+  "Strips.adminDispatcher";
+  "StripsAdminImpl.dispatcher";
+  "Strips.check_insurance";
+  "StripsStateImpl._check_insurance";
+  "Strips.check_trader";
+  "StripsStateImpl._check_trader";
+  "Strips.viewDispatcher";
+  "StripsViewImpl.dispatcher";
+  "Strips.stateDispatcher";
+  "StripsStateImpl.dispatcher";
+  "Strips.getTradingInfo";
+  "StripsViewImpl.getTradingInfo";
+  "Strips.getStakingInfo";
+  "StripsViewImpl.getStakingInfo";
+  "Strips.payKeeperReward";
+  "StripsStateImpl._payKeeperReward";
+  "Strips.assetPnl";
+  "StorageStripsLib.State.checkPosition";
+  "PnlLib.getAmmTotalPnl";
+  "Strips.close";
+  "TradeImpl.closePosition";
+  "Strips.open";
+  "TradeImpl.openPosition";
+  "TradeImpl.PositionParams";
+  "Strips.liquidatePosition";
+  "TradeImpl.liquidatePosition";
+  "Strips.changeCollateral";
+  "TradeImpl.addCollateral";
+  "TradeImpl.removeCollateral";
+  "Address.functionCall";
+  "Address.functionCallWithValue";
+  "Address.verifyCallResult";
+  "Address.functionStaticCall";
+  "target.staticcall";
+  "Address.functionDelegateCall";
+  "target.delegatecall";
+  "OwnableUpgradeable.__Ownable_init";
+  "OwnableUpgradeable.__Context_init_unchained";
+  "OwnableUpgradeable.__Ownable_init_unchained";
+  "OwnableUpgradeable._setOwner";
+  "OwnableUpgradeable._msgSender";
+  "OwnableUpgradeable.onlyOwner";
+  "OwnableUpgradeable.owner";
+  "OwnableUpgradeable.renounceOwnership";
+  "OwnableUpgradeable.transferOwnership";
+  "ContextUpgradeable.__Context_init";
+  "ContextUpgradeable.__Context_init_unchained";
+  "StorageStripsLib.setPosition";
+  "IMarket.currentOracleIndex";
+  "prevAverage.muld";
+  "initialPrice.muld";
+  "StorageStripsLib.depositToDao";
+  "SafeERC20.safeTransfer";
+  "SafeERC20.safeTransferFrom";
+  "StorageStripsLib.depositToMarket";
+  "StorageStripsLib.getMarket";
+  "StorageStripsLib.withdrawFromMarket";
+  "StorageStripsLib.depositToInsurance";
+  "SignedBaseMath.muld";
+  "SignedBaseMath._muld";
+  "SignedBaseMath.divd";
+  "SignedBaseMath._divd";
+  "SignedBaseMath.unit";
+  "StorageMarketLib.getLiquidity";
+  "StorageMarketLib.calcStakingLiqudity";
+  "stakingLiquidity.muld";
+  "StorageMarketLib.pairPrice";
+  "StorageMarketLib.calcTradingLiqudity";
+  "StorageMarketLib.maxNotional";
+  "_liquidity.muld";
+  "SignedBaseMath.onePercent";
+  "StorageMarketLib.getPrices";
+  "StorageMarketLib.currentPrice";
+  "StorageMarketLib.approveStrips";
+  "SafeERC20.safeApprove";
+  "StorageMarketLib._updateRatio";
+  "_liquidity.divd";
+  "diff.muld";
+  "diff.divd";
+  "StorageMarketLib._whatIfRatio";
+  "supply.muld";
+  "ratio.divd";
+  "demand.divd";
+  "SafeERC20._callOptionalReturn";
+  "IERC20.allowance";
+  "SafeERC20.safeIncreaseAllowance";
+  "SafeERC20.safeDecreaseAllowance";
+  "IERC20.functionCall";
+  "ReentrancyGuardUpgradeable.__ReentrancyGuard_init";
+  "ReentrancyGuardUpgradeable.__ReentrancyGuard_init_unchained";
+  "AccessControlUpgradeable.__AccessControl_init";
+  "AccessControlUpgradeable.__ERC165_init_unchained";
+  "AccessControlUpgradeable.__AccessControl_init_unchained";
+  "AccessControlUpgradeable.onlyRole";
+  "AccessControlUpgradeable._checkRole";
+  "AccessControlUpgradeable._msgSender";
+  "AccessControlUpgradeable.supportsInterface";
+  "AccessControlUpgradeable.type";
+  "ERC165Upgradeable.supportsInterface";
+  "AccessControlUpgradeable.hasRole";
+  "StringsUpgradeable.toHexString";
+  "AccessControlUpgradeable.grantRole";
+  "AccessControlUpgradeable._grantRole";
+  "AccessControlUpgradeable.getRoleAdmin";
+  "AccessControlUpgradeable.revokeRole";
+  "AccessControlUpgradeable._revokeRole";
+  "AccessControlUpgradeable.renounceRole";
+  "AccessControlUpgradeable._setupRole";
+  "AccessControlUpgradeable._setRoleAdmin";
+  "ERC165Upgradeable.__ERC165_init";
+  "ERC165Upgradeable.__ERC165_init_unchained";
+  "ERC165Upgradeable.type";
+  "MGetters.currentPrice";
+  "MGetters.oraclePrice";
+  "StorageMarketLib.State.oraclePrice";
+  "MGetters.maxNotional";
+  "StorageMarketLib.State.maxNotional";
+  "MGetters.getPrices";
+  "StorageMarketLib.State.getPrices";
+  "MGetters.getLiquidity";
+  "StorageMarketLib.State.getLiquidity";
+  "MGetters.getPartedLiquidity";
+  "StorageMarketLib.State.calcStakingLiqudity";
+  "IStripsLpToken.accumulatePnl";
+  "IStripsLpToken.balanceOf";
+  "IStripsLpToken.saveProfit";
+  "IStripsLpToken.getParams";
+  "IStripsLpToken.mint";
+  "IStripsLpToken.canUnstake";
+  "IStripsLpToken.claimProfit";
+  "StakebleEvents.logUnstakeData";
+  "IStripsLpToken.checkOwnership";
+  "requiredAmount.muld";
+  "SignedBaseMath.onpointOne";
+  "SignedBaseMath.ninetyPercent";
+  "IStripsLpToken.changeStakingPnl";
+  "IStripsLpToken.changeTradingPnl";
+  "SLPToken.calcProfit";
+  "SLPToken.burn";
+  "SLPToken.owner";
+  "SLPToken.stakingPnl";
+  "SLPToken.totalSupply";
+  "SLPToken.tradingPnl";
+  "SLPToken._mint";
+  "SLPToken._burn";
+  "SLPToken.calcFeeLeft";
+  "time_elapsed.toDecimal";
+  "SLPToken.transfer";
+  "SLPToken._transferStake";
+  "Ownable.transfer";
+  "SLPToken.transferFrom";
+  "Ownable.transferFrom";
+  "ERC20.transfer";
+  "ERC20._transfer";
+  "ERC20._msgSender";
+  "ERC20.approve";
+  "ERC20._approve";
+  "ERC20.transferFrom";
+  "ERC20.increaseAllowance";
+  "ERC20.decreaseAllowance";
+  "ERC20._beforeTokenTransfer";
+  "ERC20._afterTokenTransfer";
+  "ERC20._mint";
+  "ERC20._burn";
+  "Ownable.<Constructor>";
+  "Ownable._setOwner";
+  "Ownable._msgSender";
+  "Ownable.onlyOwner";
+  "Ownable.owner";
+  "Ownable.renounceOwnership";
+  "Ownable.transferOwnership";
+  "AssetOracle.<Constructor>";
+  "AssetOracle.performUpkeep";
+  "AssetOracle.accumulateOracle";
+  "Rewarder.rewardStaker";
+  "Rewarder.totalStakerReward";
+  "timeDiff.toDecimal";
+  "Rewarder.claimStakingReward";
+  "Rewarder.totalTradeReward";
+  "Rewarder.rewardTrader";
+  "_notional.muld";
+  "Rewarder._booster";
+  "Rewarder._updatePeriod";
+  "Rewarder.claimTradingReward";
+  "AccessControl.onlyRole";
+  "AccessControl._checkRole";
+  "AccessControl._msgSender";
+  "AccessControl.supportsInterface";
+  "AccessControl.type";
+  "ERC165.supportsInterface";
+  "AccessControl.hasRole";
+  "Strings.toHexString";
+  "AccessControl.grantRole";
+  "AccessControl._grantRole";
+  "AccessControl.getRoleAdmin";
+  "AccessControl.revokeRole";
+  "AccessControl._revokeRole";
+  "AccessControl.renounceRole";
+  "AccessControl._setupRole";
+  "AccessControl._setRoleAdmin";
+  "ERC165.type";
+  "StripsViewImpl._allOracles";
+  "StripsViewImpl._allMarkets";
+  "StripsViewImpl.calcFeeWithSlippage";
+  "StripsViewImpl.calcPositionParams";
+  "StripsViewImpl.calcCloseParams";
+  "StripsViewImpl.calcRewards";
+  "StripsViewImpl.collateralRequired";
+  "StorageStripsLib.State.getPosition";
+  "PnlLib.calcUnrealizedPnl";
+  "PnlLib.getMarginRatio";
+  "IStrips.PositionData";
+  "IStrips.PositionParams";
+  "PnlLib.calcPositionFee";
+  "PnlLib.calcPnlParts";
+  "notional.muld";
+  "PnlLib.getFundingUnrealizedPnl";
+  "PnlLib.calcAmmPnlParts";
+  "PnlLib.getAmmFundingPnl";
+  "PnlLib.getAmmAllPnl";
+  "PnlLib.getAllUnrealizedPnl";
+  "IMarket.currentPrice";
+  "IMarket.priceChange";
+  "PnlLib.calcOracleAverage";
+  "ANN_PERIOD_SEC.toDecimal";
+  "oracle_avg.muld";
+  "IMarket.getAssetOracle";
+  "PnlLib.calcPositionParams";
+  "PnlLib.calcLiquidationFee";
+  "unrealizedPnl.muld";
+  "calcPrice.muld";
+  "ammFeeRatio.muld";
+  "daoFeeRatio.muld";
+  "iFeeRatio.muld";
+  "StripsAdminImpl._addMarket";
+  "StripsAdminImpl._addOracle";
+  "StripsAdminImpl._removeOracle";
+  "StripsAdminImpl._changeOracleReward";
+  "StripsAdminImpl._setInsurance";
+  "StripsAdminImpl._changeRiskParams";
+  "StorageStripsLib.State.addMarket";
+  "StorageStripsLib.State.addOracle";
+  "StorageStripsLib.State.removeOracle";
+  "StorageStripsLib.State.changeOracleReward";
+  "StorageStripsLib.State.setInsurance";
+  "StorageStripsLib.State.setRiskParams";
+  "StripsStateImpl.claimRewards";
+  "IMarket.getPrices";
+  "IMarket.getPairOracle";
+  "IMarket.getLiquidity";
+  "IMarket.getPartedLiquidity";
+  "StripsEvents.logCheckData";
+  "StripsEvents.logCheckInsuranceData";
+  "TradeImpl._open";
+  "TradeImpl._liquidateWholeOrCloseRatio";
+  "TradeImpl._netPosition";
+  "TradeImpl._aggregate";
+  "TradeImpl._requireSlippage";
+  "TradeImpl._requireMargin";
+  "TradeImpl._close";
+  "StorageStripsLib.State.getLiquidationRatio";
+  "TradeImpl._liquidate";
+  "TradeImpl._receiveCollateral";
+  "StorageStripsLib.State.addCollateral";
+  "StorageStripsLib.State.removeCollateral";
+  "TradeImpl._returnCollateral";
+  "TradeImpl.ammPositionUpdate";
+  "StorageStripsLib.State.setPosition";
+  "TradeImpl._ammCummulateFundingPnl";
+  "notional.divd";
+  "IMarket.closePosition";
+  "TradeImpl._payPositionFee";
+  "TradeImpl._payProfitOnPositionClose";
+  "TradeImpl._borrowInsurance";
+  "StorageStripsLib.State.withdrawFromMarket";
+  "TradeImpl._unsetPostion";
+  "TradeImpl._requireNotional";
+  "StorageStripsLib.State.depositToMarket";
+  "StorageStripsLib.State.depositToInsurance";
+  "StorageStripsLib.State.unsetPosition";
+  "StorageStripsLib.State.partlyClose";
+  "TradeImpl._requireMarginRatio";
+  "IMarket.maxNotional";
+  "_amount.muld";
+  "StorageStripsLib.State.depositToDao";
+  "StorageStripsLib.State.withdrawFromInsurance";
+  "IrsMarket.initialize" -> "Address.isContract" [ color = "white" ];
+  "IrsMarket.initialize" -> "IrsMarket.__AccessControl_init" [ color = "#1bc6a6" ];
+  "IrsMarket.initialize" -> "IrsMarket.__ReentrancyGuard_init" [ color = "#1bc6a6" ];
+  "IrsMarket.initialize" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "IrsMarket.initialize" -> "IrsMarket._setupRole" [ color = "#1bc6a6" ];
+  "IrsMarket.initialize" -> "IrsMarket._setupRole" [ color = "#1bc6a6" ];
+  "IrsMarket.initialize" -> "IrsMarket._setupRole" [ color = "#1bc6a6" ];
+  "IrsMarket.createRewarder" -> "SlpFactoryImpl._rewarderFactory" [ color = "white" ];
+  "IrsMarket.createSLP" -> "SlpFactoryImpl._slpFactory" [ color = "white" ];
+  "IrsMarket.approveStrips" -> "StorageMarketLib.State.approveStrips" [ color = "white" ];
+  "IrsMarket.openPosition" -> "StorageMarketLib.State._updateRatio" [ color = "white" ];
+  "IrsMarket.openPosition" -> "StorageMarketLib.State._updateRatio" [ color = "white" ];
+  "IrsMarket.openPosition" -> "StorageMarketLib.State.currentPrice" [ color = "white" ];
+  "IrsMarket.closePosition" -> "StorageMarketLib.State._updateRatio" [ color = "white" ];
+  "IrsMarket.closePosition" -> "StorageMarketLib.State._updateRatio" [ color = "white" ];
+  "IrsMarket.closePosition" -> "StorageMarketLib.State.currentPrice" [ color = "white" ];
+  "IrsMarket.priceChange" -> "IrsMarket._priceChangeOnLong" [ color = "#1bc6a6" ];
+  "IrsMarket.priceChange" -> "IrsMarket._priceChangeOnShort" [ color = "#1bc6a6" ];
+  "IrsMarket._priceChangeOnLong" -> "StorageMarketLib.State._whatIfRatio" [ color = "white" ];
+  "IrsMarket._priceChangeOnShort" -> "StorageMarketLib.State._whatIfRatio" [ color = "white" ];
+  "IrsMarket.ensureFunds" -> "StorageMarketLib.State.calcTradingLiqudity" [ color = "white" ];
+  "IrsMarket.ensureFunds" -> "StakingImpl._burnPair" [ color = "white" ];
+  "IrsMarket.stake" -> "StakingImpl._stake" [ color = "white" ];
+  "IrsMarket.unstake" -> "StakingImpl._unstake" [ color = "white" ];
+  "IrsMarket.changeSushiRouter" -> "Address.isContract" [ color = "white" ];
+  "Strips.initialize" -> "Address.isContract" [ color = "white" ];
+  "Strips.initialize" -> "Strips.__Ownable_init" [ color = "#1bc6a6" ];
+  "Strips.adminDispatcher" -> "StripsAdminImpl.dispatcher" [ color = "white" ];
+  "Strips.check_insurance" -> "StripsStateImpl._check_insurance" [ color = "white" ];
+  "Strips.check_trader" -> "StripsStateImpl._check_trader" [ color = "white" ];
+  "Strips.viewDispatcher" -> "StripsViewImpl.dispatcher" [ color = "white" ];
+  "Strips.stateDispatcher" -> "StripsStateImpl.dispatcher" [ color = "white" ];
+  "Strips.getTradingInfo" -> "StripsViewImpl.getTradingInfo" [ color = "white" ];
+  "Strips.getStakingInfo" -> "StripsViewImpl.getStakingInfo" [ color = "white" ];
+  "Strips.payKeeperReward" -> "StripsStateImpl._payKeeperReward" [ color = "white" ];
+  "Strips.assetPnl" -> "StorageStripsLib.State.checkPosition" [ color = "white" ];
+  "Strips.assetPnl" -> "PnlLib.getAmmTotalPnl" [ color = "white" ];
+  "Strips.close" -> "TradeImpl.closePosition" [ color = "white" ];
+  "Strips.close" -> "StorageStripsLib.State.checkPosition" [ color = "white" ];
+  "Strips.open" -> "TradeImpl.openPosition" [ color = "white" ];
+  "Strips.open" -> "TradeImpl.PositionParams" [ color = "white" ];
+  "Strips.open" -> "StorageStripsLib.State.checkPosition" [ color = "white" ];
+  "Strips.liquidatePosition" -> "TradeImpl.liquidatePosition" [ color = "white" ];
+  "Strips.liquidatePosition" -> "StorageStripsLib.State.checkPosition" [ color = "white" ];
+  "Strips.changeCollateral" -> "TradeImpl.addCollateral" [ color = "white" ];
+  "Strips.changeCollateral" -> "TradeImpl.removeCollateral" [ color = "white" ];
+  "Strips.changeCollateral" -> "StorageStripsLib.State.checkPosition" [ color = "white" ];
+  "Address.functionCall" -> "Address.functionCall" [ color = "#1bc6a6" ];
+  "Address.functionCall" -> "Address.functionCallWithValue" [ color = "#1bc6a6" ];
+  "Address.functionCallWithValue" -> "Address.functionCallWithValue" [ color = "#1bc6a6" ];
+  "Address.functionCallWithValue" -> "Address.isContract" [ color = "#1bc6a6" ];
+  "Address.functionCallWithValue" -> "Address.verifyCallResult" [ color = "#1bc6a6" ];
+  "Address.functionStaticCall" -> "Address.functionStaticCall" [ color = "#1bc6a6" ];
+  "Address.functionStaticCall" -> "Address.isContract" [ color = "#1bc6a6" ];
+  "Address.functionStaticCall" -> "target.staticcall" [ color = "white" ];
+  "Address.functionStaticCall" -> "Address.verifyCallResult" [ color = "#1bc6a6" ];
+  "Address.functionDelegateCall" -> "Address.functionDelegateCall" [ color = "#1bc6a6" ];
+  "Address.functionDelegateCall" -> "Address.isContract" [ color = "#1bc6a6" ];
+  "Address.functionDelegateCall" -> "target.delegatecall" [ color = "white" ];
+  "Address.functionDelegateCall" -> "Address.verifyCallResult" [ color = "#1bc6a6" ];
+  "OwnableUpgradeable.__Ownable_init" -> "OwnableUpgradeable.__Context_init_unchained" [ color = "#1bc6a6" ];
+  "OwnableUpgradeable.__Ownable_init" -> "OwnableUpgradeable.__Ownable_init_unchained" [ color = "#1bc6a6" ];
+  "OwnableUpgradeable.__Ownable_init_unchained" -> "OwnableUpgradeable._setOwner" [ color = "#1bc6a6" ];
+  "OwnableUpgradeable.__Ownable_init_unchained" -> "OwnableUpgradeable._msgSender" [ color = "#1bc6a6" ];
+  "OwnableUpgradeable.onlyOwner" -> "OwnableUpgradeable.owner" [ color = "#1bc6a6" ];
+  "OwnableUpgradeable.onlyOwner" -> "OwnableUpgradeable._msgSender" [ color = "#1bc6a6" ];
+  "OwnableUpgradeable.renounceOwnership" -> "OwnableUpgradeable._setOwner" [ color = "#1bc6a6" ];
+  "OwnableUpgradeable.transferOwnership" -> "OwnableUpgradeable._setOwner" [ color = "#1bc6a6" ];
+  "ContextUpgradeable.__Context_init" -> "ContextUpgradeable.__Context_init_unchained" [ color = "#1bc6a6" ];
+  "StorageStripsLib.setPosition" -> "IMarket.currentOracleIndex" [ color = "white" ];
+  "StorageStripsLib.setPosition" -> "prevAverage.muld" [ color = "white" ];
+  "StorageStripsLib.setPosition" -> "initialPrice.muld" [ color = "white" ];
+  "StorageStripsLib.depositToDao" -> "SafeERC20.safeTransfer" [ color = "white" ];
+  "StorageStripsLib.depositToDao" -> "SafeERC20.safeTransferFrom" [ color = "white" ];
+  "StorageStripsLib.depositToMarket" -> "StorageStripsLib.getMarket" [ color = "#1bc6a6" ];
+  "StorageStripsLib.depositToMarket" -> "SafeERC20.safeTransfer" [ color = "white" ];
+  "StorageStripsLib.depositToMarket" -> "SafeERC20.safeTransferFrom" [ color = "white" ];
+  "StorageStripsLib.withdrawFromMarket" -> "StorageStripsLib.getMarket" [ color = "#1bc6a6" ];
+  "StorageStripsLib.withdrawFromMarket" -> "SafeERC20.safeTransferFrom" [ color = "white" ];
+  "StorageStripsLib.depositToInsurance" -> "SafeERC20.safeTransfer" [ color = "white" ];
+  "StorageStripsLib.depositToInsurance" -> "SafeERC20.safeTransferFrom" [ color = "white" ];
+  "SignedBaseMath.muld" -> "SignedBaseMath._muld" [ color = "#1bc6a6" ];
+  "SignedBaseMath.divd" -> "SignedBaseMath._divd" [ color = "#1bc6a6" ];
+  "SignedBaseMath._muld" -> "SignedBaseMath.unit" [ color = "#1bc6a6" ];
+  "SignedBaseMath._divd" -> "SignedBaseMath.unit" [ color = "#1bc6a6" ];
+  "StorageMarketLib.getLiquidity" -> "StorageMarketLib.calcStakingLiqudity" [ color = "#1bc6a6" ];
+  "StorageMarketLib.getLiquidity" -> "stakingLiquidity.muld" [ color = "white" ];
+  "StorageMarketLib.getLiquidity" -> "StorageMarketLib.pairPrice" [ color = "#1bc6a6" ];
+  "StorageMarketLib.getLiquidity" -> "StorageMarketLib.calcTradingLiqudity" [ color = "#1bc6a6" ];
+  "StorageMarketLib.maxNotional" -> "StorageMarketLib.getLiquidity" [ color = "#1bc6a6" ];
+  "StorageMarketLib.maxNotional" -> "_liquidity.muld" [ color = "white" ];
+  "StorageMarketLib.maxNotional" -> "SignedBaseMath.onePercent" [ color = "white" ];
+  "StorageMarketLib.getPrices" -> "StorageMarketLib.currentPrice" [ color = "#1bc6a6" ];
+  "StorageMarketLib.approveStrips" -> "SafeERC20.safeApprove" [ color = "white" ];
+  "StorageMarketLib._updateRatio" -> "StorageMarketLib.getLiquidity" [ color = "#1bc6a6" ];
+  "StorageMarketLib._updateRatio" -> "_liquidity.divd" [ color = "white" ];
+  "StorageMarketLib._updateRatio" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StorageMarketLib._updateRatio" -> "diff.muld" [ color = "white" ];
+  "StorageMarketLib._updateRatio" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StorageMarketLib._updateRatio" -> "diff.divd" [ color = "white" ];
+  "StorageMarketLib._updateRatio" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StorageMarketLib._whatIfRatio" -> "StorageMarketLib.getLiquidity" [ color = "#1bc6a6" ];
+  "StorageMarketLib._whatIfRatio" -> "_liquidity.divd" [ color = "white" ];
+  "StorageMarketLib._whatIfRatio" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StorageMarketLib._whatIfRatio" -> "supply.muld" [ color = "white" ];
+  "StorageMarketLib._whatIfRatio" -> "diff.muld" [ color = "white" ];
+  "StorageMarketLib._whatIfRatio" -> "ratio.divd" [ color = "white" ];
+  "StorageMarketLib._whatIfRatio" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StorageMarketLib._whatIfRatio" -> "diff.divd" [ color = "white" ];
+  "StorageMarketLib._whatIfRatio" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StorageMarketLib._whatIfRatio" -> "demand.divd" [ color = "white" ];
+  "SafeERC20.safeTransfer" -> "SafeERC20._callOptionalReturn" [ color = "#1bc6a6" ];
+  "SafeERC20.safeTransferFrom" -> "SafeERC20._callOptionalReturn" [ color = "#1bc6a6" ];
+  "SafeERC20.safeApprove" -> "IERC20.allowance" [ color = "white" ];
+  "SafeERC20.safeApprove" -> "SafeERC20._callOptionalReturn" [ color = "#1bc6a6" ];
+  "SafeERC20.safeIncreaseAllowance" -> "IERC20.allowance" [ color = "white" ];
+  "SafeERC20.safeIncreaseAllowance" -> "SafeERC20._callOptionalReturn" [ color = "#1bc6a6" ];
+  "SafeERC20.safeDecreaseAllowance" -> "IERC20.allowance" [ color = "white" ];
+  "SafeERC20.safeDecreaseAllowance" -> "SafeERC20._callOptionalReturn" [ color = "#1bc6a6" ];
+  "SafeERC20._callOptionalReturn" -> "IERC20.functionCall" [ color = "white" ];
+  "ReentrancyGuardUpgradeable.__ReentrancyGuard_init" -> "ReentrancyGuardUpgradeable.__ReentrancyGuard_init_unchained" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.__AccessControl_init" -> "ContextUpgradeable.__Context_init_unchained" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.__AccessControl_init" -> "AccessControlUpgradeable.__ERC165_init_unchained" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.__AccessControl_init" -> "AccessControlUpgradeable.__AccessControl_init_unchained" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.onlyRole" -> "AccessControlUpgradeable._checkRole" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.onlyRole" -> "AccessControlUpgradeable._msgSender" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.supportsInterface" -> "AccessControlUpgradeable.type" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.supportsInterface" -> "ERC165Upgradeable.supportsInterface" [ color = "white" ];
+  "AccessControlUpgradeable._checkRole" -> "AccessControlUpgradeable.hasRole" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable._checkRole" -> "StringsUpgradeable.toHexString" [ color = "white" ];
+  "AccessControlUpgradeable._checkRole" -> "StringsUpgradeable.toHexString" [ color = "white" ];
+  "AccessControlUpgradeable.grantRole" -> "AccessControlUpgradeable._grantRole" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.grantRole" -> "AccessControlUpgradeable.getRoleAdmin" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.revokeRole" -> "AccessControlUpgradeable._revokeRole" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.revokeRole" -> "AccessControlUpgradeable.getRoleAdmin" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.renounceRole" -> "AccessControlUpgradeable._msgSender" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable.renounceRole" -> "AccessControlUpgradeable._revokeRole" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable._setupRole" -> "AccessControlUpgradeable._grantRole" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable._setRoleAdmin" -> "AccessControlUpgradeable.getRoleAdmin" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable._grantRole" -> "AccessControlUpgradeable.hasRole" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable._grantRole" -> "AccessControlUpgradeable._msgSender" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable._revokeRole" -> "AccessControlUpgradeable.hasRole" [ color = "#1bc6a6" ];
+  "AccessControlUpgradeable._revokeRole" -> "AccessControlUpgradeable._msgSender" [ color = "#1bc6a6" ];
+  "StringsUpgradeable.toHexString" -> "StringsUpgradeable.toHexString" [ color = "#1bc6a6" ];
+  "ERC165Upgradeable.__ERC165_init" -> "ERC165Upgradeable.__ERC165_init_unchained" [ color = "#1bc6a6" ];
+  "ERC165Upgradeable.supportsInterface" -> "ERC165Upgradeable.type" [ color = "#1bc6a6" ];
+  "MGetters.currentPrice" -> "StorageMarketLib.State.currentPrice" [ color = "white" ];
+  "MGetters.oraclePrice" -> "StorageMarketLib.State.oraclePrice" [ color = "white" ];
+  "MGetters.maxNotional" -> "StorageMarketLib.State.maxNotional" [ color = "white" ];
+  "MGetters.getPrices" -> "StorageMarketLib.State.getPrices" [ color = "white" ];
+  "MGetters.getLiquidity" -> "StorageMarketLib.State.getLiquidity" [ color = "white" ];
+  "MGetters.getPartedLiquidity" -> "StorageMarketLib.State.calcTradingLiqudity" [ color = "white" ];
+  "MGetters.getPartedLiquidity" -> "StorageMarketLib.State.calcStakingLiqudity" [ color = "white" ];
+  "StakingImpl._stake" -> "IStripsLpToken.accumulatePnl" [ color = "white" ];
+  "StakingImpl._stake" -> "IStripsLpToken.balanceOf" [ color = "white" ];
+  "StakingImpl._stake" -> "IStripsLpToken.saveProfit" [ color = "white" ];
+  "StakingImpl._stake" -> "SafeERC20.safeTransferFrom" [ color = "white" ];
+  "StakingImpl._stake" -> "IStripsLpToken.getParams" [ color = "white" ];
+  "StakingImpl._stake" -> "IStripsLpToken.mint" [ color = "white" ];
+  "StakingImpl._unstake" -> "IStripsLpToken.canUnstake" [ color = "white" ];
+  "StakingImpl._unstake" -> "IStripsLpToken.accumulatePnl" [ color = "white" ];
+  "StakingImpl._unstake" -> "IStripsLpToken.claimProfit" [ color = "white" ];
+  "StakingImpl._unstake" -> "SafeERC20.safeTransfer" [ color = "white" ];
+  "StakingImpl._unstake" -> "IStripsLpToken.getParams" [ color = "white" ];
+  "StakingImpl._unstake" -> "IStripsLpToken.getParams" [ color = "white" ];
+  "StakingImpl._unstake" -> "StakingImpl._burnPair" [ color = "#1bc6a6" ];
+  "StakingImpl._unstake" -> "SafeERC20.safeTransfer" [ color = "white" ];
+  "StakingImpl._unstake" -> "IStripsLpToken.getParams" [ color = "white" ];
+  "StakingImpl._unstake" -> "StakebleEvents.logUnstakeData" [ color = "white" ];
+  "StakingImpl._burnPair" -> "IStripsLpToken.checkOwnership" [ color = "white" ];
+  "StakingImpl._burnPair" -> "IStripsLpToken.getParams" [ color = "white" ];
+  "StakingImpl._burnPair" -> "requiredAmount.muld" [ color = "white" ];
+  "StakingImpl._burnPair" -> "SignedBaseMath.onpointOne" [ color = "white" ];
+  "StakingImpl._burnPair" -> "SignedBaseMath.ninetyPercent" [ color = "white" ];
+  "StakingImpl._burnPair" -> "IStripsLpToken.changeStakingPnl" [ color = "white" ];
+  "StakingImpl._burnPair" -> "IStripsLpToken.changeTradingPnl" [ color = "white" ];
+  "IStripsLpToken.claimProfit" -> "SLPToken.calcProfit" [ color = "#1bc6a6" ];
+  "IStripsLpToken.claimProfit" -> "IStripsLpToken.changeStakingPnl" [ color = "#1bc6a6" ];
+  "IStripsLpToken.claimProfit" -> "IStripsLpToken.changeStakingPnl" [ color = "#1bc6a6" ];
+  "IStripsLpToken.claimProfit" -> "IStripsLpToken.changeTradingPnl" [ color = "#1bc6a6" ];
+  "IStripsLpToken.claimProfit" -> "SLPToken.burn" [ color = "#1bc6a6" ];
+  "IStripsLpToken.checkOwnership" -> "SLPToken.owner" [ color = "#1bc6a6" ];
+  "SLPToken.stakingPnl" -> "SLPToken.owner" [ color = "#1bc6a6" ];
+  "SLPToken.stakingPnl" -> "SLPToken.totalSupply" [ color = "#1bc6a6" ];
+  "SLPToken.tradingPnl" -> "SLPToken.owner" [ color = "#1bc6a6" ];
+  "SLPToken.tradingPnl" -> "SLPToken.totalSupply" [ color = "#1bc6a6" ];
+  "IStripsLpToken.accumulatePnl" -> "SLPToken.stakingPnl" [ color = "#1bc6a6" ];
+  "IStripsLpToken.accumulatePnl" -> "SLPToken.tradingPnl" [ color = "#1bc6a6" ];
+  "IStripsLpToken.saveProfit" -> "IStripsLpToken.balanceOf" [ color = "#1bc6a6" ];
+  "IStripsLpToken.mint" -> "SLPToken._mint" [ color = "#1bc6a6" ];
+  "SLPToken.burn" -> "IStripsLpToken.balanceOf" [ color = "#1bc6a6" ];
+  "SLPToken.burn" -> "SLPToken._burn" [ color = "#1bc6a6" ];
+  "SLPToken.burn" -> "IStripsLpToken.balanceOf" [ color = "#1bc6a6" ];
+  "IStripsLpToken.canUnstake" -> "IStripsLpToken.balanceOf" [ color = "#1bc6a6" ];
+  "SLPToken.calcProfit" -> "IStripsLpToken.balanceOf" [ color = "#1bc6a6" ];
+  "SLPToken.calcProfit" -> "SLPToken.stakingPnl" [ color = "#1bc6a6" ];
+  "SLPToken.calcProfit" -> "SLPToken.tradingPnl" [ color = "#1bc6a6" ];
+  "SLPToken.calcProfit" -> "SLPToken.calcFeeLeft" [ color = "#1bc6a6" ];
+  "SLPToken.calcFeeLeft" -> "time_elapsed.toDecimal" [ color = "white" ];
+  "SLPToken.transfer" -> "SLPToken._transferStake" [ color = "#1bc6a6" ];
+  "SLPToken.transfer" -> "Ownable.transfer" [ color = "white" ];
+  "SLPToken.transferFrom" -> "SLPToken._transferStake" [ color = "#1bc6a6" ];
+  "SLPToken.transferFrom" -> "Ownable.transferFrom" [ color = "white" ];
+  "SLPToken._transferStake" -> "IStripsLpToken.balanceOf" [ color = "#1bc6a6" ];
+  "SLPToken._transferStake" -> "IStripsLpToken.balanceOf" [ color = "#1bc6a6" ];
+  "ERC20.transfer" -> "ERC20._transfer" [ color = "#1bc6a6" ];
+  "ERC20.transfer" -> "ERC20._msgSender" [ color = "#1bc6a6" ];
+  "ERC20.approve" -> "ERC20._approve" [ color = "#1bc6a6" ];
+  "ERC20.approve" -> "ERC20._msgSender" [ color = "#1bc6a6" ];
+  "ERC20.transferFrom" -> "ERC20._transfer" [ color = "#1bc6a6" ];
+  "ERC20.transferFrom" -> "ERC20._msgSender" [ color = "#1bc6a6" ];
+  "ERC20.transferFrom" -> "ERC20._approve" [ color = "#1bc6a6" ];
+  "ERC20.transferFrom" -> "ERC20._msgSender" [ color = "#1bc6a6" ];
+  "ERC20.increaseAllowance" -> "ERC20._approve" [ color = "#1bc6a6" ];
+  "ERC20.increaseAllowance" -> "ERC20._msgSender" [ color = "#1bc6a6" ];
+  "ERC20.increaseAllowance" -> "ERC20._msgSender" [ color = "#1bc6a6" ];
+  "ERC20.decreaseAllowance" -> "ERC20._msgSender" [ color = "#1bc6a6" ];
+  "ERC20.decreaseAllowance" -> "ERC20._approve" [ color = "#1bc6a6" ];
+  "ERC20.decreaseAllowance" -> "ERC20._msgSender" [ color = "#1bc6a6" ];
+  "ERC20._transfer" -> "ERC20._beforeTokenTransfer" [ color = "#1bc6a6" ];
+  "ERC20._transfer" -> "ERC20._afterTokenTransfer" [ color = "#1bc6a6" ];
+  "ERC20._mint" -> "ERC20._beforeTokenTransfer" [ color = "#1bc6a6" ];
+  "ERC20._mint" -> "ERC20._afterTokenTransfer" [ color = "#1bc6a6" ];
+  "ERC20._burn" -> "ERC20._beforeTokenTransfer" [ color = "#1bc6a6" ];
+  "ERC20._burn" -> "ERC20._afterTokenTransfer" [ color = "#1bc6a6" ];
+  "Ownable.<Constructor>" -> "Ownable._setOwner" [ color = "#1bc6a6" ];
+  "Ownable.<Constructor>" -> "Ownable._msgSender" [ color = "#1bc6a6" ];
+  "Ownable.onlyOwner" -> "Ownable.owner" [ color = "#1bc6a6" ];
+  "Ownable.onlyOwner" -> "Ownable._msgSender" [ color = "#1bc6a6" ];
+  "Ownable.renounceOwnership" -> "Ownable._setOwner" [ color = "#1bc6a6" ];
+  "Ownable.transferOwnership" -> "Ownable._setOwner" [ color = "#1bc6a6" ];
+  "AssetOracle.<Constructor>" -> "Address.isContract" [ color = "white" ];
+  "AssetOracle.performUpkeep" -> "AssetOracle.accumulateOracle" [ color = "#1bc6a6" ];
+  "Rewarder.rewardStaker" -> "Rewarder.totalStakerReward" [ color = "#1bc6a6" ];
+  "Rewarder.rewardStaker" -> "timeDiff.toDecimal" [ color = "white" ];
+  "Rewarder.claimStakingReward" -> "Rewarder.totalStakerReward" [ color = "#1bc6a6" ];
+  "Rewarder.claimStakingReward" -> "timeDiff.toDecimal" [ color = "white" ];
+  "Rewarder.claimStakingReward" -> "SafeERC20.safeTransferFrom" [ color = "white" ];
+  "Rewarder.totalStakerReward" -> "timeDiff.toDecimal" [ color = "white" ];
+  "Rewarder.totalTradeReward" -> "timeDiff.toDecimal" [ color = "white" ];
+  "Rewarder.rewardTrader" -> "_notional.muld" [ color = "white" ];
+  "Rewarder.rewardTrader" -> "Rewarder._booster" [ color = "#1bc6a6" ];
+  "Rewarder.rewardTrader" -> "Rewarder._updatePeriod" [ color = "#1bc6a6" ];
+  "Rewarder.rewardTrader" -> "Rewarder.totalTradeReward" [ color = "#1bc6a6" ];
+  "Rewarder.rewardTrader" -> "Rewarder._updatePeriod" [ color = "#1bc6a6" ];
+  "Rewarder.claimTradingReward" -> "Rewarder.totalTradeReward" [ color = "#1bc6a6" ];
+  "Rewarder.claimTradingReward" -> "Rewarder._updatePeriod" [ color = "#1bc6a6" ];
+  "Rewarder.claimTradingReward" -> "timeDiff.toDecimal" [ color = "white" ];
+  "Rewarder.claimTradingReward" -> "SafeERC20.safeTransferFrom" [ color = "white" ];
+  "Rewarder._updatePeriod" -> "timeDiff.toDecimal" [ color = "white" ];
+  "Rewarder._booster" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "Rewarder._booster" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "AccessControl.onlyRole" -> "AccessControl._checkRole" [ color = "#1bc6a6" ];
+  "AccessControl.onlyRole" -> "AccessControl._msgSender" [ color = "#1bc6a6" ];
+  "AccessControl.supportsInterface" -> "AccessControl.type" [ color = "#1bc6a6" ];
+  "AccessControl.supportsInterface" -> "ERC165.supportsInterface" [ color = "white" ];
+  "AccessControl._checkRole" -> "AccessControl.hasRole" [ color = "#1bc6a6" ];
+  "AccessControl._checkRole" -> "Strings.toHexString" [ color = "white" ];
+  "AccessControl._checkRole" -> "Strings.toHexString" [ color = "white" ];
+  "AccessControl.grantRole" -> "AccessControl._grantRole" [ color = "#1bc6a6" ];
+  "AccessControl.grantRole" -> "AccessControl.getRoleAdmin" [ color = "#1bc6a6" ];
+  "AccessControl.revokeRole" -> "AccessControl._revokeRole" [ color = "#1bc6a6" ];
+  "AccessControl.revokeRole" -> "AccessControl.getRoleAdmin" [ color = "#1bc6a6" ];
+  "AccessControl.renounceRole" -> "AccessControl._msgSender" [ color = "#1bc6a6" ];
+  "AccessControl.renounceRole" -> "AccessControl._revokeRole" [ color = "#1bc6a6" ];
+  "AccessControl._setupRole" -> "AccessControl._grantRole" [ color = "#1bc6a6" ];
+  "AccessControl._setRoleAdmin" -> "AccessControl.getRoleAdmin" [ color = "#1bc6a6" ];
+  "AccessControl._grantRole" -> "AccessControl.hasRole" [ color = "#1bc6a6" ];
+  "AccessControl._grantRole" -> "AccessControl._msgSender" [ color = "#1bc6a6" ];
+  "AccessControl._revokeRole" -> "AccessControl.hasRole" [ color = "#1bc6a6" ];
+  "AccessControl._revokeRole" -> "AccessControl._msgSender" [ color = "#1bc6a6" ];
+  "Strings.toHexString" -> "Strings.toHexString" [ color = "#1bc6a6" ];
+  "ERC165.supportsInterface" -> "ERC165.type" [ color = "#1bc6a6" ];
+  "StripsViewImpl.dispatcher" -> "StripsViewImpl._allOracles" [ color = "#1bc6a6" ];
+  "StripsViewImpl.dispatcher" -> "StripsViewImpl._allMarkets" [ color = "#1bc6a6" ];
+  "StripsViewImpl.dispatcher" -> "StripsViewImpl.calcFeeWithSlippage" [ color = "#1bc6a6" ];
+  "StripsViewImpl.dispatcher" -> "StripsViewImpl.calcPositionParams" [ color = "#1bc6a6" ];
+  "StripsViewImpl.dispatcher" -> "StripsViewImpl.calcCloseParams" [ color = "#1bc6a6" ];
+  "StripsViewImpl.dispatcher" -> "StripsViewImpl.calcRewards" [ color = "#1bc6a6" ];
+  "StripsViewImpl.collateralRequired" -> "StorageStripsLib.State.getPosition" [ color = "white" ];
+  "StripsViewImpl.collateralRequired" -> "PnlLib.calcUnrealizedPnl" [ color = "white" ];
+  "StripsViewImpl.collateralRequired" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StripsViewImpl.getTradingInfo" -> "StorageStripsLib.State.checkPosition" [ color = "white" ];
+  "StripsViewImpl.getTradingInfo" -> "PnlLib.getMarginRatio" [ color = "white" ];
+  "StripsViewImpl.getTradingInfo" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StripsViewImpl.getTradingInfo" -> "PnlLib.calcUnrealizedPnl" [ color = "white" ];
+  "StripsViewImpl.getTradingInfo" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StripsViewImpl.getTradingInfo" -> "IStrips.PositionData" [ color = "white" ];
+  "StripsViewImpl.getTradingInfo" -> "IStrips.PositionParams" [ color = "white" ];
+  "StripsViewImpl.calcFeeWithSlippage" -> "PnlLib.calcPositionFee" [ color = "white" ];
+  "StripsViewImpl.calcFeeWithSlippage" -> "SignedBaseMath.onePercent" [ color = "white" ];
+  "StripsViewImpl.calcPositionParams" -> "StorageStripsLib.State.getPosition" [ color = "white" ];
+  "StripsViewImpl.calcPositionParams" -> "IStrips.PositionParams" [ color = "white" ];
+  "StripsViewImpl.calcPositionParams" -> "PnlLib.calcPnlParts" [ color = "white" ];
+  "StripsViewImpl.calcPositionParams" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StripsViewImpl.calcPositionParams" -> "PnlLib.getMarginRatio" [ color = "white" ];
+  "StripsViewImpl.calcPositionParams" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StripsViewImpl.calcCloseParams" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StripsViewImpl.calcCloseParams" -> "StorageStripsLib.State.getPosition" [ color = "white" ];
+  "StripsViewImpl.calcCloseParams" -> "PnlLib.getMarginRatio" [ color = "white" ];
+  "StripsViewImpl.calcCloseParams" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StripsViewImpl.calcCloseParams" -> "notional.muld" [ color = "white" ];
+  "StripsViewImpl.calcCloseParams" -> "PnlLib.calcPositionFee" [ color = "white" ];
+  "PnlLib.getMarginRatio" -> "PnlLib.calcUnrealizedPnl" [ color = "#1bc6a6" ];
+  "PnlLib.getMarginRatio" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "PnlLib.getMarginRatio" -> "PnlLib.calcUnrealizedPnl" [ color = "#1bc6a6" ];
+  "PnlLib.getMarginRatio" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "PnlLib.getMarginRatio" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "PnlLib.getMarginRatio" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "PnlLib.getFundingUnrealizedPnl" -> "PnlLib.calcPnlParts" [ color = "#1bc6a6" ];
+  "PnlLib.calcUnrealizedPnl" -> "PnlLib.calcPnlParts" [ color = "#1bc6a6" ];
+  "PnlLib.getAmmTotalPnl" -> "PnlLib.calcAmmPnlParts" [ color = "#1bc6a6" ];
+  "PnlLib.getAmmFundingPnl" -> "PnlLib.calcAmmPnlParts" [ color = "#1bc6a6" ];
+  "PnlLib.getAmmAllPnl" -> "PnlLib.calcAmmPnlParts" [ color = "#1bc6a6" ];
+  "PnlLib.getAllUnrealizedPnl" -> "PnlLib.calcPnlParts" [ color = "#1bc6a6" ];
+  "PnlLib.calcPnlParts" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "PnlLib.calcPnlParts" -> "IMarket.currentPrice" [ color = "white" ];
+  "PnlLib.calcPnlParts" -> "IMarket.priceChange" [ color = "white" ];
+  "PnlLib.calcPnlParts" -> "PnlLib.calcOracleAverage" [ color = "#1bc6a6" ];
+  "PnlLib.calcPnlParts" -> "time_elapsed.toDecimal" [ color = "white" ];
+  "PnlLib.calcPnlParts" -> "ANN_PERIOD_SEC.toDecimal" [ color = "white" ];
+  "PnlLib.calcPnlParts" -> "oracle_avg.muld" [ color = "white" ];
+  "PnlLib.calcPnlParts" -> "time_elapsed.toDecimal" [ color = "white" ];
+  "PnlLib.calcAmmPnlParts" -> "IMarket.currentPrice" [ color = "white" ];
+  "PnlLib.calcAmmPnlParts" -> "PnlLib.calcOracleAverage" [ color = "#1bc6a6" ];
+  "PnlLib.calcAmmPnlParts" -> "time_elapsed.toDecimal" [ color = "white" ];
+  "PnlLib.calcAmmPnlParts" -> "ANN_PERIOD_SEC.toDecimal" [ color = "white" ];
+  "PnlLib.calcAmmPnlParts" -> "oracle_avg.muld" [ color = "white" ];
+  "PnlLib.calcAmmPnlParts" -> "time_elapsed.toDecimal" [ color = "white" ];
+  "PnlLib.calcOracleAverage" -> "IMarket.getAssetOracle" [ color = "white" ];
+  "PnlLib.calcPositionParams" -> "StorageStripsLib.State.getPosition" [ color = "white" ];
+  "PnlLib.calcPositionParams" -> "PnlLib.calcPnlParts" [ color = "#1bc6a6" ];
+  "PnlLib.calcPositionParams" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "PnlLib.calcLiquidationFee" -> "PnlLib.getAllUnrealizedPnl" [ color = "#1bc6a6" ];
+  "PnlLib.calcLiquidationFee" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "PnlLib.calcLiquidationFee" -> "unrealizedPnl.muld" [ color = "white" ];
+  "PnlLib.calcLiquidationFee" -> "unrealizedPnl.muld" [ color = "white" ];
+  "PnlLib.calcLiquidationFee" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "PnlLib.calcLiquidationFee" -> "unrealizedPnl.muld" [ color = "white" ];
+  "PnlLib.calcPositionFee" -> "calcPrice.muld" [ color = "white" ];
+  "PnlLib.calcPositionFee" -> "SignedBaseMath.onePercent" [ color = "white" ];
+  "PnlLib.calcPositionFee" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "PnlLib.calcPositionFee" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "PnlLib.calcPositionFee" -> "ammFeeRatio.muld" [ color = "white" ];
+  "PnlLib.calcPositionFee" -> "daoFeeRatio.muld" [ color = "white" ];
+  "PnlLib.calcPositionFee" -> "iFeeRatio.muld" [ color = "white" ];
+  "StripsAdminImpl.dispatcher" -> "StripsAdminImpl._addMarket" [ color = "#1bc6a6" ];
+  "StripsAdminImpl.dispatcher" -> "StripsAdminImpl._addOracle" [ color = "#1bc6a6" ];
+  "StripsAdminImpl.dispatcher" -> "StripsAdminImpl._removeOracle" [ color = "#1bc6a6" ];
+  "StripsAdminImpl.dispatcher" -> "StripsAdminImpl._changeOracleReward" [ color = "#1bc6a6" ];
+  "StripsAdminImpl.dispatcher" -> "StripsAdminImpl._setInsurance" [ color = "#1bc6a6" ];
+  "StripsAdminImpl.dispatcher" -> "StripsAdminImpl._changeRiskParams" [ color = "#1bc6a6" ];
+  "StripsAdminImpl._addMarket" -> "StorageStripsLib.State.addMarket" [ color = "white" ];
+  "StripsAdminImpl._addOracle" -> "StorageStripsLib.State.addOracle" [ color = "white" ];
+  "StripsAdminImpl._removeOracle" -> "StorageStripsLib.State.removeOracle" [ color = "white" ];
+  "StripsAdminImpl._changeOracleReward" -> "StorageStripsLib.State.changeOracleReward" [ color = "white" ];
+  "StripsAdminImpl._setInsurance" -> "StorageStripsLib.State.setInsurance" [ color = "white" ];
+  "StripsAdminImpl._changeRiskParams" -> "StorageStripsLib.State.setRiskParams" [ color = "white" ];
+  "StripsStateImpl.dispatcher" -> "StripsStateImpl.claimRewards" [ color = "#1bc6a6" ];
+  "StripsStateImpl._check_trader" -> "IMarket.getPrices" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "IMarket.getPairOracle" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "StorageStripsLib.State.checkPosition" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "IMarket.getLiquidity" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "IMarket.getPartedLiquidity" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "PnlLib.getAmmAllPnl" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "StorageStripsLib.State.checkPosition" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "PnlLib.getAllUnrealizedPnl" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "StorageStripsLib.State.checkPosition" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "PnlLib.getMarginRatio" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "PnlLib.getAllUnrealizedPnl" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "StripsStateImpl._check_trader" -> "StripsEvents.logCheckData" [ color = "white" ];
+  "StripsStateImpl._check_insurance" -> "StripsEvents.logCheckInsuranceData" [ color = "white" ];
+  "TradeImpl.openPosition" -> "StorageStripsLib.State.checkPosition" [ color = "white" ];
+  "TradeImpl.openPosition" -> "TradeImpl._open" [ color = "#1bc6a6" ];
+  "TradeImpl.openPosition" -> "TradeImpl._liquidateWholeOrCloseRatio" [ color = "#1bc6a6" ];
+  "TradeImpl.openPosition" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl.openPosition" -> "TradeImpl._netPosition" [ color = "#1bc6a6" ];
+  "TradeImpl.openPosition" -> "TradeImpl._aggregate" [ color = "#1bc6a6" ];
+  "TradeImpl.openPosition" -> "TradeImpl._requireSlippage" [ color = "#1bc6a6" ];
+  "TradeImpl.closePosition" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl.closePosition" -> "StorageStripsLib.State.getPosition" [ color = "white" ];
+  "TradeImpl.closePosition" -> "TradeImpl._requireMargin" [ color = "#1bc6a6" ];
+  "TradeImpl.closePosition" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl.closePosition" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl.closePosition" -> "notional.muld" [ color = "white" ];
+  "TradeImpl.closePosition" -> "TradeImpl._close" [ color = "#1bc6a6" ];
+  "TradeImpl.closePosition" -> "TradeImpl._requireSlippage" [ color = "#1bc6a6" ];
+  "TradeImpl.closePosition" -> "TradeImpl._requireMargin" [ color = "#1bc6a6" ];
+  "TradeImpl.closePosition" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl.liquidatePosition" -> "StorageStripsLib.State.getPosition" [ color = "white" ];
+  "TradeImpl.liquidatePosition" -> "PnlLib.getMarginRatio" [ color = "white" ];
+  "TradeImpl.liquidatePosition" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl.liquidatePosition" -> "StorageStripsLib.State.getLiquidationRatio" [ color = "white" ];
+  "TradeImpl.liquidatePosition" -> "TradeImpl._liquidate" [ color = "#1bc6a6" ];
+  "TradeImpl.addCollateral" -> "StorageStripsLib.State.getPosition" [ color = "white" ];
+  "TradeImpl.addCollateral" -> "TradeImpl._receiveCollateral" [ color = "#1bc6a6" ];
+  "TradeImpl.addCollateral" -> "StorageStripsLib.State.addCollateral" [ color = "white" ];
+  "TradeImpl.addCollateral" -> "TradeImpl._requireMargin" [ color = "#1bc6a6" ];
+  "TradeImpl.addCollateral" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl.removeCollateral" -> "StorageStripsLib.State.getPosition" [ color = "white" ];
+  "TradeImpl.removeCollateral" -> "StorageStripsLib.State.removeCollateral" [ color = "white" ];
+  "TradeImpl.removeCollateral" -> "TradeImpl._returnCollateral" [ color = "#1bc6a6" ];
+  "TradeImpl.removeCollateral" -> "TradeImpl._requireMargin" [ color = "#1bc6a6" ];
+  "TradeImpl.removeCollateral" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl.ammPositionUpdate" -> "StorageStripsLib.State.checkPosition" [ color = "white" ];
+  "TradeImpl.ammPositionUpdate" -> "StorageStripsLib.State.setPosition" [ color = "white" ];
+  "TradeImpl.ammPositionUpdate" -> "TradeImpl._ammCummulateFundingPnl" [ color = "#1bc6a6" ];
+  "TradeImpl._ammCummulateFundingPnl" -> "PnlLib.getAmmFundingPnl" [ color = "white" ];
+  "TradeImpl._ammCummulateFundingPnl" -> "IMarket.currentOracleIndex" [ color = "white" ];
+  "TradeImpl._netPosition" -> "notional.divd" [ color = "white" ];
+  "TradeImpl._netPosition" -> "TradeImpl._liquidateWholeOrCloseRatio" [ color = "#1bc6a6" ];
+  "TradeImpl._netPosition" -> "TradeImpl._liquidateWholeOrCloseRatio" [ color = "#1bc6a6" ];
+  "TradeImpl._netPosition" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl._netPosition" -> "diff.divd" [ color = "white" ];
+  "TradeImpl._netPosition" -> "TradeImpl._open" [ color = "#1bc6a6" ];
+  "TradeImpl._aggregate" -> "PnlLib.getFundingUnrealizedPnl" [ color = "white" ];
+  "TradeImpl._aggregate" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl._aggregate" -> "TradeImpl._open" [ color = "#1bc6a6" ];
+  "TradeImpl._liquidateWholeOrCloseRatio" -> "PnlLib.getMarginRatio" [ color = "white" ];
+  "TradeImpl._liquidateWholeOrCloseRatio" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl._liquidateWholeOrCloseRatio" -> "StorageStripsLib.State.getLiquidationRatio" [ color = "white" ];
+  "TradeImpl._liquidateWholeOrCloseRatio" -> "TradeImpl._liquidate" [ color = "#1bc6a6" ];
+  "TradeImpl._liquidateWholeOrCloseRatio" -> "TradeImpl._close" [ color = "#1bc6a6" ];
+  "TradeImpl._close" -> "PnlLib.getAllUnrealizedPnl" [ color = "white" ];
+  "TradeImpl._close" -> "IMarket.currentPrice" [ color = "white" ];
+  "TradeImpl._close" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl._close" -> "IMarket.closePosition" [ color = "white" ];
+  "TradeImpl._close" -> "TradeImpl._payPositionFee" [ color = "#1bc6a6" ];
+  "TradeImpl._close" -> "TradeImpl._payProfitOnPositionClose" [ color = "#1bc6a6" ];
+  "TradeImpl._close" -> "TradeImpl._returnCollateral" [ color = "#1bc6a6" ];
+  "TradeImpl._close" -> "IMarket.getLiquidity" [ color = "white" ];
+  "TradeImpl._close" -> "TradeImpl._borrowInsurance" [ color = "#1bc6a6" ];
+  "TradeImpl._close" -> "StorageStripsLib.State.withdrawFromMarket" [ color = "white" ];
+  "TradeImpl._close" -> "TradeImpl._returnCollateral" [ color = "#1bc6a6" ];
+  "TradeImpl._close" -> "TradeImpl._returnCollateral" [ color = "#1bc6a6" ];
+  "TradeImpl._close" -> "TradeImpl.ammPositionUpdate" [ color = "#1bc6a6" ];
+  "TradeImpl._close" -> "TradeImpl._unsetPostion" [ color = "#1bc6a6" ];
+  "TradeImpl._open" -> "TradeImpl._requireNotional" [ color = "#1bc6a6" ];
+  "TradeImpl._open" -> "StorageStripsLib.State.setPosition" [ color = "white" ];
+  "TradeImpl._open" -> "TradeImpl._receiveCollateral" [ color = "#1bc6a6" ];
+  "TradeImpl._open" -> "TradeImpl._payPositionFee" [ color = "#1bc6a6" ];
+  "TradeImpl._open" -> "StorageStripsLib.State.getPosition" [ color = "white" ];
+  "TradeImpl._open" -> "TradeImpl.ammPositionUpdate" [ color = "#1bc6a6" ];
+  "TradeImpl._open" -> "TradeImpl._requireMargin" [ color = "#1bc6a6" ];
+  "TradeImpl._open" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl._liquidate" -> "PnlLib.calcLiquidationFee" [ color = "white" ];
+  "TradeImpl._liquidate" -> "IMarket.closePosition" [ color = "white" ];
+  "TradeImpl._liquidate" -> "IMarket.getLiquidity" [ color = "white" ];
+  "TradeImpl._liquidate" -> "TradeImpl._borrowInsurance" [ color = "#1bc6a6" ];
+  "TradeImpl._liquidate" -> "StorageStripsLib.State.depositToMarket" [ color = "white" ];
+  "TradeImpl._liquidate" -> "StorageStripsLib.State.depositToInsurance" [ color = "white" ];
+  "TradeImpl._liquidate" -> "TradeImpl._returnCollateral" [ color = "#1bc6a6" ];
+  "TradeImpl._liquidate" -> "TradeImpl.ammPositionUpdate" [ color = "#1bc6a6" ];
+  "TradeImpl._liquidate" -> "TradeImpl._unsetPostion" [ color = "#1bc6a6" ];
+  "TradeImpl._liquidate" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl._unsetPostion" -> "SignedBaseMath.oneDecimal" [ color = "white" ];
+  "TradeImpl._unsetPostion" -> "StorageStripsLib.State.unsetPosition" [ color = "white" ];
+  "TradeImpl._unsetPostion" -> "StorageStripsLib.State.partlyClose" [ color = "white" ];
+  "TradeImpl._requireMargin" -> "PnlLib.getMarginRatio" [ color = "white" ];
+  "TradeImpl._requireMargin" -> "TradeImpl._requireMarginRatio" [ color = "#1bc6a6" ];
+  "TradeImpl._requireMarginRatio" -> "StorageStripsLib.State.getLiquidationRatio" [ color = "white" ];
+  "TradeImpl._requireNotional" -> "IMarket.maxNotional" [ color = "white" ];
+  "TradeImpl._receiveCollateral" -> "SafeERC20.safeTransferFrom" [ color = "white" ];
+  "TradeImpl._returnCollateral" -> "SafeERC20.safeTransfer" [ color = "white" ];
+  "TradeImpl._payProfitOnPositionClose" -> "_amount.muld" [ color = "white" ];
+  "TradeImpl._payProfitOnPositionClose" -> "StorageStripsLib.State.depositToMarket" [ color = "white" ];
+  "TradeImpl._payProfitOnPositionClose" -> "StorageStripsLib.State.depositToInsurance" [ color = "white" ];
+  "TradeImpl._payPositionFee" -> "PnlLib.calcPositionFee" [ color = "white" ];
+  "TradeImpl._payPositionFee" -> "StorageStripsLib.State.depositToMarket" [ color = "white" ];
+  "TradeImpl._payPositionFee" -> "StorageStripsLib.State.depositToInsurance" [ color = "white" ];
+  "TradeImpl._payPositionFee" -> "StorageStripsLib.State.depositToDao" [ color = "white" ];
+  "TradeImpl._borrowInsurance" -> "StorageStripsLib.State.withdrawFromInsurance" [ color = "white" ];
+
+
+rankdir=LR
+node [shape=plaintext]
+subgraph cluster_01 { 
+label = "Legend";
+key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+  <tr><td align="right" port="i1">Internal Call</td></tr>
+  <tr><td align="right" port="i2">External Call</td></tr>
+  <tr><td align="right" port="i3">Defined Contract</td></tr>
+  <tr><td align="right" port="i4">Undefined Contract</td></tr>
+  </table>>]
+key2 [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+  <tr><td port="i1">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i2">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i3" bgcolor="#445773">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i4">
+    <table border="1" cellborder="0" cellspacing="0" cellpadding="7" color="#e8726d">
+      <tr>
+       <td></td>
+      </tr>
+     </table>
+  </td></tr>
+  </table>>]
+key:i1:e -> key2:i1:w [color="#1bc6a6"]
+key:i2:e -> key2:i2:w [color="white"]
+}
+}
