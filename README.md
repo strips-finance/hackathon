@@ -38,6 +38,13 @@ in the separate terminal launch check. This command will attach to rinkArby addr
 npx hardhat forkCheck --network local
 ```
 
+# How to launch the liquidator 
+
+Liquidator is the script that liquidate positions in Strips. You should launch it locally via cron for any period (10 minutes is ok). To do that we've added the script, launch that with:
+```shell
+sh scripts/keepers/liquidator.sh
+```
+
 
 
 # Structure of the repo
