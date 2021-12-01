@@ -42,6 +42,7 @@ npx hardhat forkCheck --network local
 
 Liquidator is the script that liquidate positions in Strips. You should launch it locally via cron for any period (10 minutes is ok). To do that we've added the script, launch that with:
 ```shell
+touch .env
 sh scripts/keepers/liquidator.sh
 ```
 
