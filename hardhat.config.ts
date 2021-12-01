@@ -14,11 +14,15 @@ import 'hardhat-deploy-ethers';
 
 import { 
   integrity,
-  liquidationKeeper
+  liquidationKeeper,
+  forkCheck
 } from "./tasks"
 
 task("liquidationKeeper", "send performUpkeep to liquidation keeper")
   .setAction(liquidationKeeper);
+
+task("forkCheck", "once you forked local node, helps to validate strips contracts")
+  .setAction(forkCheck);
 
 
 task("integrity", "execute basic checks with contracts")

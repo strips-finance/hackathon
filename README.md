@@ -25,6 +25,21 @@ Now you can launch hardhat console and interact with Strips contracts
 yarn hardhat console --network local
 ```
 
+# How to fork arbitrum testnet 
+Open terminal and launch local forked hardhat node:
+
+
+```shell
+npx hardhat node --no-deploy --fork https://rinkeby.arbitrum.io/rpc
+```
+
+in the separate terminal launch check. This command will attach to rinkArby addresses and check that values are correct
+```shell
+npx hardhat forkCheck --network local
+```
+
+
+
 # Structure of the repo
 
     .

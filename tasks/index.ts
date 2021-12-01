@@ -1,5 +1,4 @@
-import { Signer, utils } from 'ethers';
-import { Contract } from 'ethers';
+import { Signer, utils, Contract } from 'ethers';
 import { TransactionReceipt } from '@ethersproject/abstract-provider';
 import {HardhatRuntimeEnvironment} from 'hardhat/types';
 
@@ -118,3 +117,30 @@ export async function integrity(params: any, hre:any){
 }
 
 
+export async function forkCheck(params: any, hre:any){
+    const { ethers } = hre;
+    const { deployments, getNamedAccounts } = hre;
+    const { deployer } = await getNamedAccounts();
+    const deployerSigner = await ethers.getSigner(deployer);
+
+    let chainId = await hre.getChainId();
+
+    console.log("chainId =" + chainId);
+    console.log("deployer =" + deployer);
+
+    const strips = require("../deployments/rinkArby/Strips.json");
+    const STRIPS = new ethers.Contract(strips.address, strips.abi, deployerSigner);
+    console.log("STRIPS found at=", STRIPS.address);
+
+    const ftxmarket = require("../deployments/rinkArby/IrsMarket-ftx-btc-funding.json");
+    const FtxMarket = new ethers.Contract(ftxmarket.address, ftxmarket.abi, deployerSigner);
+    console.log("FtxMarket found at=", FtxMarket.address);
+
+    console.log("...checking prices:");
+    let [
+        marketPrice,
+        oraclePrice
+    ] = await FtxMarket.getPrices();
+    console.log("ftxMarket marketPrice=" + ethers.utils.formatUnits(marketPrice) + " oraclePrice=" + ethers.utils.formatUnits(oraclePrice));
+
+}
