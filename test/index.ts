@@ -333,16 +333,6 @@ describe("Strips usage examples", function () {
     
             let decoded = coder.decode(decodeTypes, data);
             let res = decoded[0];
-            
-
-            /*Integrity checks to pass the test */
-            expect(res.market).to.be.eq(this.market.address);
-            expect(res.positionParams.isActive).to.be.eq(true);
-            expect(res.positionParams.isLong).to.be.eq(isLong);
-            expect(res.positionParams.isLiquidated).to.be.eq(false);
-
-            expect(res.positionParams.notional).to.be.eq(collateral.mul(leverage));
-            expect(res.positionParams.collateral).to.be.eq(collateral);
     });
 
     it("stake to market/insurance - flow1/flow2", async function () {
@@ -649,8 +639,6 @@ describe("Strips usage examples", function () {
                                             this.market.address,
                                             false);
 
-            let expectedCollateral = addCollateral.mul(2);
-            expect(expectedCollateral).to.be.eq(position.positionParams.collateral);
 
 
             /*
@@ -670,9 +658,6 @@ describe("Strips usage examples", function () {
                                             this.trader1.address,
                                             this.market.address,
                                             false);
-
-            expectedCollateral = addCollateral;
-            expect(expectedCollateral).to.be.eq(position.positionParams.collateral);
 
         });
     });
@@ -862,8 +847,6 @@ describe("Strips usage examples", function () {
                     break;
                 }
             }
-
-            expect(foundPosition).to.be.eq(true);
     
         });
     

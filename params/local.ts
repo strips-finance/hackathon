@@ -47,3 +47,8 @@ export const market = {
     periodLength: 2592000,  // 1 month
     washTime: 150
 }
+
+export const testParams = {
+    instantLpOracle: true,
+    liquidationSize: 100
+}

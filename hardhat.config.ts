@@ -12,8 +12,18 @@ import "hardhat-contract-sizer";
 import 'hardhat-deploy';
 import 'hardhat-deploy-ethers';
 
+import { 
+  integrity,
+  liquidationKeeper
+} from "./tasks"
 
-dotenv.config();
+task("liquidationKeeper", "send performUpkeep to liquidation keeper")
+  .setAction(liquidationKeeper);
+
+
+task("integrity", "execute basic checks with contracts")
+  .setAction(integrity);
+
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -24,6 +34,11 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     console.log(account.address);
   }
 });
+
+const accounts = {
+  mnemonic: `${process.env.MNEMONIC}`
+};
+
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
@@ -54,6 +69,7 @@ const config: HardhatUserConfig = {
         url: "https://rinkeby.arbitrum.io/rpc",
         live: true,
         saveDeployments: true,
+        accounts
       },
       local: {
         url: "http://127.0.0.1:8545",
@@ -65,6 +81,7 @@ const config: HardhatUserConfig = {
       default: 0, // here this will by default take the first account as deployer
       1: `${process.env.DEPLOYER_ADDRESS}`, // for mainnet
       4: `${process.env.DEPLOYER_ADDRESS}`, // for rinkeby
+      421611: `${process.env.DEPLOYER_ADDRESS}`, // for arbitrum testnet
 
     },
     tokenOwner: 1,

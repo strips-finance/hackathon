@@ -12,6 +12,7 @@ import { abi as abiAssetOracle } from '../external/AssetOracle.json';
 import { abi as abiInsurance } from '../external/InsuranceFund.json';
 import { abi as abiIrsMarket } from '../external/IrsMarket.json';
 import { abi as abiStrips } from '../external/Strips.json';
+import { abi as abiLiqudationKeeper } from '../external/LiquidationKeeper.json';
 import { abi as abiSusd } from '../external/SUSD.json';
 import { abi as abiStrp } from '../external/STRP.json';
 
@@ -131,8 +132,8 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
         tokenB,
         tokenAStrpAmount,
         tokenBUsdcAmount,
-        tokenAStrpAmount,
-        tokenBUsdcAmount,
+        0,
+        0,
         deployer,
         deadline
     );
@@ -147,7 +148,25 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
         address: lp_pair
     });
 
-    console.log("4. deploying Strips");
+    console.log("4. deploying UniLpOracle");
+    factory = await hre.ethers.getContractFactory("UniswapLpOracle");
+    const UniLpOracle = await factory.connect(deployerSigner).deploy(
+        univ2router02.address, 
+        STRP.address,
+        LP_PAIR.address,
+        setupParams.testParams.instantLpOracle);
+    
+    let coder = hre.ethers.utils.defaultAbiCoder;
+    let DUMMY_DATA = coder.encode(["int256"], [hre.ethers.constants.MaxInt256]);
+
+    tx = await UniLpOracle.performUpkeep(DUMMY_DATA);
+    await tx.wait();  
+  
+    let lpPrice = await UniLpOracle.getPrice();
+    console.log("SUCCESS: UniLpOracle deployed and first keep done with price=", hre.ethers.utils.formatUnits(lpPrice, DECIMALS));
+
+
+    console.log("5. deploying Strips");
     factory = await hre.ethers.getContractFactory("Strips", {
         libraries:{
             TradeImpl: TradeImpl.address,
@@ -161,31 +180,32 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
         setupParams.stripsParams.riskParams,
         SUSD.address,
         setupParams.stripsParams.keepAlive,
-        deployer);
+        deployer,
+        UniLpOracle.address);
 
     await tx.wait();
     await save("Strips", {
         abi: abiStrips,
         address: STRIPS.address
     });
-
-    console.log("5. deploying IrsMarket and Oracles");
-    factory = await hre.ethers.getContractFactory("UniswapLpOracle");
-    const UniLpOracle = await factory.connect(deployerSigner).deploy(
-        STRIPS.address,
-        LP_PAIR.address, 
-        UNI_LP_ORACLE_AVG_PERIOD,
-        UNI_LP_ORACLE_AVG_INTERVAL);
     
-    let coder = hre.ethers.utils.defaultAbiCoder;
-    let encodedPrice = coder.encode(["int256"], [setupParams.uniLpOracleParams.initialPrice._hex]);
+    console.log("5.1...deploying liquidationKeeper");
+    factory = await hre.ethers.getContractFactory("LiquidationKeeper");
+    const LiqudationKeeper = await factory.connect(deployerSigner).deploy(
+            STRIPS.address,
+            SUSD.address,
+            setupParams.testParams.liquidationSize);
 
-    tx = await UniLpOracle.performUpkeep(encodedPrice);
-    await tx.wait();  
-  
-    let lpPrice = await UniLpOracle.getPrice();
-    console.log("SUCCESS: UniLpOracle deployed and first keep done with price=", hre.ethers.utils.formatUnits(lpPrice, DECIMALS));
-    
+    console.log("...assign pinger to liquidator");
+    tx = await STRIPS.changePinger(LiqudationKeeper.address);
+    await tx.wait();
+    await save("LiquidationKeeper", {
+        abi: abiLiqudationKeeper,
+        address: LiqudationKeeper.address
+    });
+
+    console.log("SUCCESS: Liqudation Keeper setup and deployed");
+
     /*
     ****************************
     *   STEP 5: deploy and setup Market
@@ -195,7 +215,7 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     console.log("6...deploying and setup Markets and Oracles");
     factory = await hre.ethers.getContractFactory("AssetOracle");
     const AssetOracle = await factory.connect(deployerSigner).deploy(STRIPS.address, deployer);
-    encodedPrice = coder.encode(["int256"], [setupParams.assetOracle.initialPrice._hex]);
+    let encodedPrice = coder.encode(["int256"], [setupParams.assetOracle.initialPrice._hex]);
 
     tx = await AssetOracle.performUpkeep(encodedPrice);
     await tx.wait();
