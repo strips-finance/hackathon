@@ -4,7 +4,7 @@
   "description": "template for playing with strips locally",
   "scripts": {
     "test-node": "hardhat node --no-deploy",
-    "deploy:local": "hardhat deploy --tags local-strips --network local"
+    "deploy:local": "hardhat deploy --tags local-strips --reset --network local"
   },
   "repository": {
     "type": "git",
