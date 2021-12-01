@@ -1,4 +1,6 @@
-# Strips hackathon template
+# Strips hackathon 
+
+Rules can be found here: https://strips-finance.medium.com/announcing-the-40-000-strips-hackathon-4994cb286cd6
 
 This project allows to deploy local version of Strips and all related contracts.
 
